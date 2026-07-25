@@ -1,82 +1,13 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
+// PMD Learning Centre
 
-body{
-    background:#f4f7fb;
-    color:#333;
-}
+document.addEventListener("DOMContentLoaded", () => {
+    alert("PMD Learning Centre में आपका स्वागत है!");
+});
 
-header{
-    background:linear-gradient(135deg,#0d6efd,#198754);
-    color:white;
-    text-align:center;
-    padding:40px 20px;
-}
+const button = document.querySelector(".hero button");
 
-nav{
-    background:#fff;
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    padding:15px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
-}
-
-nav a{
-    text-decoration:none;
-    color:#0d6efd;
-    font-weight:bold;
-    margin:10px 15px;
-}
-
-.hero{
-    text-align:center;
-    padding:60px 20px;
-}
-
-.hero button{
-    background:#0d6efd;
-    color:white;
-    border:none;
-    padding:12px 25px;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:16px;
-}
-
-.subjects{
-    padding:40px 20px;
-}
-
-.subjects h2{
-    text-align:center;
-    margin-bottom:25px;
-}
-
-.card{
-    background:white;
-    padding:20px;
-    margin:15px auto;
-    max-width:300px;
-    border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,.1);
-    text-align:center;
-    font-size:20px;
-    transition:.3s;
-}
-
-.card:hover{
-    transform:scale(1.05);
-}
-
-footer{
-    background:#222;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:30px;
+if(button){
+    button.addEventListener("click", () => {
+        alert("जल्द ही सभी Free Notes और Quiz उपलब्ध होंगे।");
+    });
 }
