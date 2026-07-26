@@ -35,3 +35,6 @@ alert("Subject नहीं मिला");
 }
 
 }
+function darkMode() {
+    document.body.classList.toggle("dark");
+}
