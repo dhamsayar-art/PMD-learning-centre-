@@ -478,3 +478,29 @@ background:#FFF8E1;
 font-size:50px;
 color:#FFC107;
 }
+form{
+max-width:500px;
+margin:30px auto;
+padding:20px;
+background:white;
+border-radius:10px;
+box-shadow:0 5px 10px rgba(0,0,0,.1);
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+button{
+background:#FFC107;
+color:black;
+padding:12px 20px;
+border:none;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+}
