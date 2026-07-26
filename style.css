@@ -74,11 +74,20 @@ nav a{
 }
 
 footer{
-    background:#222;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:30px;
+background:#212121;
+color:white;
+text-align:center;
+padding:30px 20px;
+margin-top:40px;
+}
+
+footer h2{
+color:#FFC107;
+margin-bottom:10px;
+}
+
+footer p{
+margin:8px 0;
 }
 .courses,
 .notes,
