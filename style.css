@@ -468,3 +468,13 @@ padding:12px;
 font-size:18px;
 font-weight:bold;
 }
+.counter{
+text-align:center;
+padding:30px;
+background:#FFF8E1;
+}
+
+.counter h1{
+font-size:50px;
+color:#FFC107;
+}
