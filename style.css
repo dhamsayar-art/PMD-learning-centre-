@@ -461,3 +461,10 @@ object-fit:cover;
 border-radius:15px;
 box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
+.notification{
+background:#212121;
+color:#FFC107;
+padding:12px;
+font-size:18px;
+font-weight:bold;
+}
