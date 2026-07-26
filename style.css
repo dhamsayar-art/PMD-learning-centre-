@@ -334,3 +334,17 @@ border-radius:50%;
 text-decoration:none;
 box-shadow:0 4px 10px rgba(0,0,0,.3);
 }
+.testimonials{
+padding:40px 20px;
+background:#ffffff;
+text-align:center;
+}
+
+.testimonial-card{
+background:#FFF8E1;
+max-width:500px;
+margin:20px auto;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 10px rgba(0,0,0,.1);
+}
