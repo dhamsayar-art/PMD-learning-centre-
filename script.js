@@ -38,3 +38,22 @@ alert("Subject नहीं मिला");
 function darkMode() {
     document.body.classList.toggle("dark");
 }
+let images = [
+"images/banner1.jpg",
+"images/banner2.jpg",
+"images/banner3.jpg"
+];
+
+let index = 0;
+
+setInterval(function(){
+
+index++;
+
+if(index>=images.length){
+index=0;
+}
+
+document.getElementById("slider").src=images[index];
+
+},3000);
