@@ -430,3 +430,20 @@ align-items:center;
 font-size:24px;
 z-index:9999;
 }
+.dark{
+    background-color:#222;
+    color:white;
+}
+
+.dark header{
+    background:#111;
+}
+
+.dark .card{
+    background:#333;
+    color:white;
+}
+
+.dark footer{
+    background:#111;
+}
