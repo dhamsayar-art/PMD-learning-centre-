@@ -398,3 +398,21 @@ font-size:18px;
 font-weight:bold;
 cursor:pointer;
 }
+.social-links{
+margin-top:20px;
+}
+
+.social-links a{
+display:inline-block;
+margin:8px;
+padding:10px 15px;
+background:#FFC107;
+color:#212121;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+}
+
+.social-links a:hover{
+background:#FFD54F;
+}
