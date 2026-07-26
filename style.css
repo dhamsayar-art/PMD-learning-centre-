@@ -246,3 +246,21 @@ transform:translateY(-5px);
 color:#FFC107;
 margin-bottom:10px;
 }
+.exam{
+padding:40px;
+text-align:center;
+}
+
+.exam ul{
+list-style:none;
+padding:0;
+}
+
+.exam li{
+background:#FFC107;
+margin:10px auto;
+max-width:300px;
+padding:12px;
+border-radius:10px;
+font-weight:bold;
+}
