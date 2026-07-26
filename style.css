@@ -264,3 +264,21 @@ padding:12px;
 border-radius:10px;
 font-weight:bold;
 }
+.current-affairs{
+padding:40px 20px;
+background:#f9f9f9;
+}
+
+.current-affairs h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+.news-card{
+background:white;
+padding:20px;
+margin:15px auto;
+max-width:500px;
+border-radius:10px;
+box-shadow:0 5px 10px rgba(0,0,0,.1);
+}
