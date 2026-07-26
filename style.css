@@ -383,3 +383,18 @@ box-shadow:0 4px 10px rgba(0,0,0,.1);
 .faq-box h3{
 color:#FFC107;
 }
+.app-download{
+text-align:center;
+padding:40px;
+background:#FFF8E1;
+}
+
+.app-download button{
+background:#FFC107;
+border:none;
+padding:15px 30px;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
