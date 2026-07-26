@@ -217,3 +217,32 @@ box-shadow:0 3px 10px rgba(0,0,0,.1);
 color:#FFC107;
 margin-bottom:10px;
 }
+.featured{
+padding:40px 20px;
+text-align:center;
+background:#fff8e1;
+}
+
+.featured h2{
+color:#212121;
+margin-bottom:20px;
+}
+
+.course-box{
+background:white;
+margin:15px auto;
+max-width:350px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:0.3s;
+}
+
+.course-box:hover{
+transform:translateY(-5px);
+}
+
+.course-box h3{
+color:#FFC107;
+margin-bottom:10px;
+}
