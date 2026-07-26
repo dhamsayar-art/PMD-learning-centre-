@@ -298,3 +298,27 @@ box-shadow:0 5px 10px rgba(0,0,0,.1);
 color:#212121;
 font-weight:bold;
 }
+.stats{
+padding:40px 20px;
+background:#FFF8E1;
+text-align:center;
+}
+
+.stat-box{
+background:white;
+margin:15px auto;
+padding:20px;
+max-width:250px;
+border-radius:12px;
+box-shadow:0 5px 10px rgba(0,0,0,.1);
+}
+
+.stat-box h3{
+font-size:32px;
+color:#FFC107;
+margin:0;
+}
+
+.stat-box p{
+font-size:18px;
+}
