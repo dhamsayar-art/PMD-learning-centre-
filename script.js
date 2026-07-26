@@ -11,3 +11,6 @@ if(button){
         alert("जल्द ही सभी Free Notes और Quiz उपलब्ध होंगे।");
     });
 }
+window.addEventListener("load", function () {
+  document.getElementById("loader").style.display = "none";
+});
