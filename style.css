@@ -166,3 +166,33 @@ justify-content:center;
 .logo img{
 border-radius:50%;
 }
+.hero-banner{
+background:linear-gradient(135deg,#FFC107,#FFD54F);
+padding:80px 20px;
+text-align:center;
+color:#212121;
+}
+
+.hero-banner h1{
+font-size:40px;
+margin-bottom:15px;
+}
+
+.hero-banner p{
+font-size:20px;
+margin-bottom:25px;
+}
+
+.start-btn{
+background:#212121;
+color:white;
+padding:15px 35px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+display:inline-block;
+}
+
+.start-btn:hover{
+background:#000;
+}
