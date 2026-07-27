@@ -25,6 +25,58 @@
 <button id="saveBtn">Save Profile</button>
 
 </div>
+<script type="module">
+import { auth, db } from "./firebase.js";
 
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+import {
+  doc,
+  setDoc
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+let currentUser = null;
+
+// Check Login
+onAuthStateChanged(auth, (user) => {
+
+    if(user){
+        currentUser = user;
+    }else{
+        window.location.href="login.html";
+    }
+
+});
+
+// Save Profile
+document.getElementById("saveBtn").addEventListener("click", async()=>{
+
+const name=document.getElementById("name").value;
+const mobile=document.getElementById("mobile").value;
+const course=document.getElementById("course").value;
+const address=document.getElementById("address").value;
+
+try{
+
+await setDoc(doc(db,"students",currentUser.uid),{
+
+name:name,
+mobile:mobile,
+course:course,
+address:address,
+email:currentUser.email
+
+});
+
+alert("Profile Saved Successfully!");
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+});
+</script>
 </body>
 </html>
