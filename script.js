@@ -58,7 +58,7 @@ document.getElementById("slider").src=images[index];
 
 },3000);
 async function uploadPDF() {
-
+alert("Upload Function Working");
   const file = document.getElementById("pdfFile").files[0];
 
   if (!file) {
