@@ -623,3 +623,23 @@ footer{
     text-align:center;
     padding:30px;
 }
+.toppers{
+    padding:60px 20px;
+    text-align:center;
+    background:#fff;
+}
+
+.topper-card{
+    display:inline-block;
+    width:250px;
+    margin:15px;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+.topper-card img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+}
