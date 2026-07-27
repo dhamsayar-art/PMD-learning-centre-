@@ -617,3 +617,9 @@ cursor:pointer;
     cursor:pointer;
     font-size:18px;
 }
+footer{
+    background:#002147;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
