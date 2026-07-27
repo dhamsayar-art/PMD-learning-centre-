@@ -31,7 +31,30 @@
 
 <input type="file" id="pdfFile" accept=".pdf">
 
-<button onclick="uploadPDF()">PDF Upload</button>
+async function uploadPDF() {
+  const file = document.getElementById("pdfFile").files[0];
+
+  if (!file) {
+    alert("पहले PDF चुनें");
+    return;
+  }
+
+  const { data, error } = await supabase.storage
+    .from("notes")
+    .upload(file.name, file, {
+      upsert: true
+    });
+
+  console.log("DATA:", data);
+  console.log("ERROR:", error);
+
+  if (error) {
+    alert(error.message);
+    document.getElementById("status").innerHTML = "❌ " + error.message;
+  } else {
+    document.getElementById("status").innerHTML = "✅ PDF Upload Success";
+  }
+}
 
 <p id="status"></p>
 
