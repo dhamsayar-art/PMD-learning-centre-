@@ -6,6 +6,7 @@
 <title>Admin Panel - PMD Learning Centre</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>
@@ -22,14 +23,21 @@
 <button>❓ नया Quiz बनाएँ</button><br><br>
 
 <button>👨‍🎓 Students देखें</button>
-
 </div>
 
-</body><h2>📄 PDF Upload</h2>
+<hr>
+
+<h2>📄 PDF Upload</h2>
 
 <input type="file" id="pdfFile" accept=".pdf">
 
 <button onclick="uploadPDF()">PDF Upload</button>
 
 <p id="status"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script src="script.js"></script>
+
+</body>
 </html>
