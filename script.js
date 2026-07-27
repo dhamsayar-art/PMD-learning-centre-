@@ -57,3 +57,25 @@ index=0;
 document.getElementById("slider").src=images[index];
 
 },3000);
+async function uploadPDF() {
+
+  const file = document.getElementById("pdfFile").files[0];
+
+  if (!file) {
+    alert("पहले PDF चुनें");
+    return;
+  }
+
+  const { data, error } = await supabase.storage
+    .from("notes")
+    .upload(file.name, file, {
+      upsert: true
+    });
+
+  if (error) {
+    document.getElementById("status").innerHTML = "❌ Upload Failed";
+    console.log(error);
+  } else {
+    document.getElementById("status").innerHTML = "✅ PDF Upload Success";
+  }
+}
