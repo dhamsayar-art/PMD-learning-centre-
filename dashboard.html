@@ -38,6 +38,35 @@
 </div>
 
 </div>
+<script type="module">
+import { auth } from "./firebase.js";
 
+import {
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+// Check Login
+onAuthStateChanged(auth, (user) => {
+
+    if (user) {
+        document.getElementById("userEmail").innerText =
+            "👤 " + user.email;
+    } else {
+        window.location.href = "login.html";
+    }
+
+});
+
+// Logout
+document.getElementById("logoutBtn").addEventListener("click", () => {
+
+    signOut(auth).then(() => {
+        alert("Logout Successful");
+        window.location.href = "login.html";
+    });
+
+});
+</script>
 </body>
 </html>
