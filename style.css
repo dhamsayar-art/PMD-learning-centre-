@@ -560,3 +560,30 @@ cursor:pointer;
 .btn:hover{
   background:#e68900;
 }
+.founder{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
+    padding:60px 20px;
+    flex-wrap:wrap;
+    background:#f8f9fa;
+}
+
+.founder img{
+    width:260px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.founder-text{
+    max-width:550px;
+}
+
+.founder-text h2{
+    color:#ff9800;
+}
+
+.founder-text h3{
+    color:#003366;
+}
