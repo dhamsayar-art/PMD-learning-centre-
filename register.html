@@ -28,6 +28,35 @@
 </p>
 
 </div>
+<script type="module">
+import { auth } from "./firebase.js";
+import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
+const btn = document.getElementById("registerBtn");
+
+btn.addEventListener("click", async () => {
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+
+  if (password !== confirmPassword) {
+    alert("पासवर्ड मैच नहीं कर रहे हैं।");
+    return;
+  }
+
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+
+    alert("Registration Successful!");
+
+    window.location.href = "login.html";
+
+  } catch (error) {
+    alert(error.message);
+  }
+
+});
+</script>
 </body>
 </html>
