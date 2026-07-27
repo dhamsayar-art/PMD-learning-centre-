@@ -18,3 +18,4 @@ export const auth = getAuth(app);
 import { getFirestore } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 export const db = getFirestore(app);
+import { auth, db } from "./firebase.js";
