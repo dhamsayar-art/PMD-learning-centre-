@@ -44,8 +44,7 @@
 </div>
 
 </div>
-<script type="module">
-import { auth } from "./firebase.js";
+<script type="module">import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 import {
   onAuthStateChanged,
@@ -73,6 +72,6 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
     });
 
 });
-</script>import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+</script>
 </body>
 </html>
