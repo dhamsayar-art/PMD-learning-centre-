@@ -587,3 +587,33 @@ cursor:pointer;
 .founder-text h3{
     color:#003366;
 }
+.admission{
+    padding:60px 20px;
+    background:#f5f5f5;
+    text-align:center;
+}
+
+.admission form{
+    max-width:600px;
+    margin:auto;
+}
+
+.admission input,
+.admission select,
+.admission textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.admission button{
+    background:#ff9800;
+    color:#fff;
+    padding:12px 30px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
+}
