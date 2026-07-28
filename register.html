@@ -1,62 +1,648 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register - PMD Learning Centre</title>
-<link rel="stylesheet" href="style.css">
+
+<title>Student Registration | PMD Learning Centre</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#FFD54F,#FF9800,#F57C00);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+overflow:auto;
+padding:30px;
+
+}
+
+body::before{
+
+content:"";
+position:fixed;
+width:450px;
+height:450px;
+background:rgba(255,255,255,.12);
+border-radius:50%;
+top:-150px;
+left:-120px;
+
+}
+
+body::after{
+
+content:"";
+position:fixed;
+width:350px;
+height:350px;
+background:rgba(255,255,255,.12);
+border-radius:50%;
+bottom:-120px;
+right:-100px;
+
+}
+
+.register-container{
+
+width:100%;
+max-width:600px;
+position:relative;
+z-index:10;
+
+}
+
+.register-card{
+
+background:#fff;
+border-radius:25px;
+padding:40px;
+box-shadow:0 20px 60px rgba(0,0,0,.25);
+
+}
+
+.logo{
+
+text-align:center;
+margin-bottom:25px;
+
+}
+
+.logo img{
+
+width:110px;
+
+}
+
+.logo h2{
+
+margin-top:12px;
+font-size:28px;
+color:#222;
+
+}
+
+.logo p{
+
+margin-top:6px;
+color:#777;
+
+}
+
+.form-group{
+
+margin-bottom:18px;
+position:relative;
+
+}
+
+.form-group input,
+.form-group select{
+
+width:100%;
+padding:15px 45px;
+border:2px solid #ddd;
+border-radius:12px;
+font-size:15px;
+outline:none;
+transition:.3s;
+
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+border-color:#F57C00;
+
+}
+
+.form-group i{
+
+position:absolute;
+left:15px;
+top:50%;
+transform:translateY(-50%);
+color:#777;
+
+}
+
+.password-toggle{
+
+position:absolute;
+right:15px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+color:#777;
+
+}
+
+.row{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+
+}
+
+@media(max-width:650px){
+
+.row{
+
+grid-template-columns:1fr;
+
+}
+
+.register-card{
+
+padding:25px;
+
+}
+
+}
+        .terms{
+            display:flex;
+            align-items:flex-start;
+            gap:10px;
+            margin:18px 0;
+            font-size:14px;
+            color:#555;
+        }
+
+        .terms input{
+            margin-top:3px;
+        }
+
+        .terms a{
+            color:#F57C00;
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        .register-btn{
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:12px;
+            background:#F57C00;
+            color:#fff;
+            font-size:16px;
+            font-weight:600;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        .register-btn:hover{
+            background:#E65100;
+        }
+
+        .divider{
+            display:flex;
+            align-items:center;
+            margin:25px 0;
+        }
+
+        .divider::before,
+        .divider::after{
+            content:"";
+            flex:1;
+            height:1px;
+            background:#ddd;
+        }
+
+        .divider span{
+            padding:0 15px;
+            color:#777;
+        }
+
+        .google-btn{
+            width:100%;
+            padding:14px;
+            border:2px solid #ddd;
+            border-radius:12px;
+            background:#fff;
+            cursor:pointer;
+            font-size:15px;
+            font-weight:600;
+        }
+
+        .google-btn i{
+            color:#DB4437;
+            margin-right:8px;
+        }
+
+        .login-link{
+            text-align:center;
+            margin-top:20px;
+        }
+
+        .login-link a{
+            color:#F57C00;
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        .message{
+            display:none;
+            margin-top:15px;
+            padding:12px;
+            border-radius:10px;
+            text-align:center;
+        }
+
+    </style>
+
 </head>
+
 <body>
 
-<header>
-<h1>PMD Learning Centre</h1>
-</header>
+<div class="register-container">
 
-<div class="login-box">
+<div class="register-card">
+
+<div class="logo">
+
+<img src="images/logo.png" alt="PMD Logo">
+
 <h2>Student Registration</h2>
 
-<input type="text" id="name" placeholder="पूरा नाम">
-<input type="email" id="email" placeholder="ईमेल">
-<input type="password" id="password" placeholder="पासवर्ड">
-<input type="password" id="confirmPassword" placeholder="पासवर्ड दोबारा लिखें">
-
-<button id="registerBtn">Register</button>
-
-
-<p>पहले से अकाउंट है?
-<a href="login.html">Login</a>
-</p>
+<p>Create Your PMD Learning Centre Account</p>
 
 </div>
-<script type="module">
-import { auth } from "./firebase.js";
-import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-const btn = document.getElementById("registerBtn");
+<form id="registerForm">
 
-btn.addEventListener("click", async () => {
+<div class="form-group">
 
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const confirmPassword = document.getElementById("confirmPassword").value;
+<i class="fa-solid fa-user"></i>
 
-  if (password !== confirmPassword) {
-    alert("पासवर्ड मैच नहीं कर रहे हैं।");
-    return;
-  }
+<input
+type="text"
+id="fullName"
+placeholder="Full Name"
+required>
 
-  try {
-    await createUserWithEmailAndPassword(auth, email, password);
+</div>
 
-    alert("Registration Successful!");
+<div class="row">
 
-    window.location.href = "login.html";
+<div class="form-group">
 
-  } catch (error) {
-    alert(error.message);
-  }
+<i class="fa-solid fa-envelope"></i>
+
+<input
+type="email"
+id="email"
+placeholder="Email Address"
+required>
+
+</div>
+
+<div class="form-group">
+
+<i class="fa-solid fa-phone"></i>
+
+<input
+type="tel"
+id="mobile"
+placeholder="Mobile Number"
+required>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="form-group">
+
+<i class="fa-solid fa-calendar"></i>
+
+<input
+type="date"
+id="dob"
+required>
+
+</div>
+
+<div class="form-group">
+
+<i class="fa-solid fa-venus-mars"></i>
+
+<select id="gender" required>
+
+<option value="">Select Gender</option>
+
+<option>Male</option>
+
+<option>Female</option>
+
+<option>Other</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="form-group">
+
+<i class="fa-solid fa-book"></i>
+
+<select id="course" required>
+
+<option value="">Select Course</option>
+
+<option>Rajasthan GK</option>
+
+<option>LDC</option>
+
+<option>CET</option>
+
+<option>REET</option>
+
+<option>Patwari</option>
+
+<option>Police</option>
+
+<option>SSC</option>
+
+<option>Banking</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+id="password"
+placeholder="Create Password"
+required>
+
+<i class="fa-solid fa-eye password-toggle"
+id="togglePassword"></i>
+
+</div>
+
+<div class="form-group">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirm Password"
+required>
+
+<i class="fa-solid fa-eye password-toggle"
+id="toggleConfirmPassword"></i>
+
+</div>
+
+<div class="terms">
+
+<input
+type="checkbox"
+id="terms"
+required>
+
+<label for="terms">
+
+I agree to the
+<a href="#">Terms & Conditions</a>
+
+</label>
+
+</div>
+
+<button
+type="submit"
+class="register-btn">
+
+Create Account
+
+</button>
+
+<div class="divider">
+
+<span>OR</span>
+
+</div>
+
+<button
+type="button"
+class="google-btn"
+id="googleSignup">
+
+<i class="fab fa-google"></i>
+
+Continue with Google
+
+</button>
+
+<div
+id="message"
+class="message">
+
+</div>
+
+<div class="login-link">
+
+Already have an account?
+
+<a href="login.html">
+
+Login Now
+
+</a>
+
+</div>
+</form>
+
+<footer style="margin-top:25px;text-align:center;color:#777;font-size:13px;">
+
+© 2026 PMD Learning Centre
+All Rights Reserved.
+
+</footer>
+
+</div>
+
+</div>
+
+<!-- Loading Screen -->
+
+<div id="loadingScreen" class="loading-screen" style="display:none;">
+
+<div class="loader"></div>
+
+<p>Creating Your Account...</p>
+
+</div>
+
+<style>
+
+.loading-screen{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(255,255,255,.95);
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+z-index:9999;
+
+}
+
+.loader{
+
+width:55px;
+height:55px;
+
+border:6px solid #eee;
+border-top:6px solid #F57C00;
+
+border-radius:50%;
+
+animation:spin 1s linear infinite;
+
+}
+
+.loading-screen p{
+
+margin-top:15px;
+font-weight:600;
+color:#333;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+</style>
+
+<!-- Firebase -->
+
+<script type="module" src="firebase.js"></script>
+
+<!-- Register Script -->
+
+<script src="register.js"></script>
+
+<script>
+
+const password=document.getElementById("password");
+
+const confirmPassword=document.getElementById("confirmPassword");
+
+const togglePassword=document.getElementById("togglePassword");
+
+const toggleConfirm=document.getElementById("toggleConfirmPassword");
+
+// Password Toggle
+
+togglePassword.onclick=()=>{
+
+if(password.type==="password"){
+
+password.type="text";
+
+togglePassword.classList.replace("fa-eye","fa-eye-slash");
+
+}else{
+
+password.type="password";
+
+togglePassword.classList.replace("fa-eye-slash","fa-eye");
+
+}
+
+};
+
+// Confirm Password Toggle
+
+toggleConfirm.onclick=()=>{
+
+if(confirmPassword.type==="password"){
+
+confirmPassword.type="text";
+
+toggleConfirm.classList.replace("fa-eye","fa-eye-slash");
+
+}else{
+
+confirmPassword.type="password";
+
+toggleConfirm.classList.replace("fa-eye-slash","fa-eye");
+
+}
+
+};
+
+// Password Match Validation
+
+document.getElementById("registerForm").addEventListener("submit",(e)=>{
+
+if(password.value!==confirmPassword.value){
+
+e.preventDefault();
+
+const msg=document.getElementById("message");
+
+msg.style.display="block";
+
+msg.style.background="#fde8e8";
+
+msg.style.color="#c62828";
+
+msg.innerHTML="Passwords do not match.";
+
+return;
+
+}
+
+document.getElementById("loadingScreen").style.display="flex";
 
 });
+
 </script>
+
 </body>
+
 </html>
