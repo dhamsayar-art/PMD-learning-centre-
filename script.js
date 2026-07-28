@@ -1,52 +1,64 @@
-// PMD Learning Centre
+// ======================================
+// PMD Learning Centre v2.0
+// script.js - Part 1
+// ======================================
 
-document.addEventListener("DOMContentLoaded", () => {
-    alert("PMD Learning Centre में आपका स्वागत है!");
-});
-
-const button = document.querySelector(".hero button");
-
-if(button){
-    button.addEventListener("click", () => {
-        alert("जल्द ही सभी Free Notes और Quiz उपलब्ध होंगे।");
-    });
-}
+// Loader
 window.addEventListener("load", function () {
-  document.getElementById("loader").style.display = "none";
+    const loader = document.getElementById("loader");
+    if (loader) {
+        loader.style.display = "none";
+    }
 });
-function searchSubject() {
 
-let search = document.getElementById("searchInput").value.toLowerCase();
+// Welcome Message
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("PMD Learning Centre Loaded Successfully");
+});
 
-if(search=="math" || search=="गणित"){
-window.location.href="subjects.html";
-}
+// ======================================
+// Dark Mode
+// ======================================
 
-else if(search=="science" || search=="विज्ञान"){
-window.location.href="subjects.html";
-}
-
-else if(search=="history" || search=="इतिहास"){
-window.location.href="subjects.html";
-}
-
-else{
-alert("Subject नहीं मिला");
-}
-
-}
 function darkMode() {
+
     document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+        localStorage.setItem("theme","dark");
+    }else{
+        localStorage.setItem("theme","light");
+    }
+
 }
+
+window.onload = function(){
+
+    if(localStorage.getItem("theme")=="dark"){
+        document.body.classList.add("dark");
+    }
+
+};
+
+// ======================================
+// Banner Slider
+// ======================================
+
 let images = [
+
 "images/banner1.jpg",
 "images/banner2.jpg",
 "images/banner3.jpg"
+
 ];
 
 let index = 0;
 
 setInterval(function(){
+
+let slider=document.getElementById("slider");
+
+if(slider){
 
 index++;
 
@@ -54,28 +66,84 @@ if(index>=images.length){
 index=0;
 }
 
-document.getElementById("slider").src=images[index];
+slider.src=images[index];
+
+}
 
 },3000);
-async function uploadPDF() {
-alert("Upload Function Working");
-  const file = document.getElementById("pdfFile").files[0];
 
-  if (!file) {
-    alert("पहले PDF चुनें");
-    return;
-  }
+// ======================================
+// Search Subject
+// ======================================
 
-  const { data, error } = await supabase.storage
-    .from("notes")
-    .upload(file.name, file, {
-      upsert: true
-    });
+function searchSubject(){
 
-  if (error) {
-    document.getElementById("status").innerHTML = "❌ Upload Failed";
-    alert(JSON.stringify(error));
-  } else {
-    document.getElementById("status").innerHTML = "✅ PDF Upload Success";
-  }
+let search=document.getElementById("searchInput").value.toLowerCase();
+
+if(search=="math" || search=="mathematics" || search=="गणित"){
+
+window.location.href="notes.html";
+
+}
+
+else if(search=="science" || search=="विज्ञान"){
+
+window.location.href="notes.html";
+
+}
+
+else if(search=="computer"){
+
+window.location.href="notes.html";
+
+}
+
+else if(search=="english"){
+
+window.location.href="notes.html";
+
+}
+
+else if(search=="rajasthan gk"){
+
+window.location.href="notes.html";
+
+}
+
+else{
+
+alert("❌ Subject Not Found");
+
+}
+
+}
+
+// ======================================
+// Install App
+// ======================================
+
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt",(e)=>{
+
+e.preventDefault();
+
+deferredPrompt=e;
+
+});
+
+const installBtn=document.querySelector(".download-btn");
+
+if(installBtn){
+
+installBtn.addEventListener("click",async()=>{
+
+if(deferredPrompt){
+
+deferredPrompt.prompt();
+
+}
+
+});
+
 }
