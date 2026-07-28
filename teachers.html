@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Teacher Management | PMD Learning Centre</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f6fa;
+}
+
+.container{
+
+max-width:1400px;
+
+margin:auto;
+
+padding:30px;
+
+}
+
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+}
+
+.header h2{
+
+color:#222;
+
+}
+
+.add-btn{
+
+background:#F57C00;
+
+color:#fff;
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:15px;
+
+font-weight:600;
+
+}
+
+.search-box{
+
+margin-bottom:25px;
+
+}
+
+.search-box input{
+
+width:100%;
+
+padding:14px;
+
+border:2px solid #ddd;
+
+border-radius:10px;
+
+outline:none;
+
+font-size:15px;
+
+}
+
+.teacher-form{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:15px;
+
+background:#fff;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+margin-bottom:30px;
+
+}
+
+.teacher-form input,
+.teacher-form select{
+
+padding:13px;
+
+border:2px solid #ddd;
+
+border-radius:10px;
+
+outline:none;
+
+}
+
+.teacher-form button{
+
+background:#F57C00;
+
+color:#fff;
+
+border:none;
+
+padding:14px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-weight:600;
+
+}
+
+.table-box{
+
+background:#fff;
+
+padding:20px;
+
+border-radius:18px;
+
+overflow:auto;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+th{
+
+background:#F57C00;
+
+color:#fff;
+
+padding:15px;
+
+}
+
+td{
+
+padding:15px;
+
+text-align:center;
+
+border-bottom:1px solid #eee;
+
+}
+
+.action-btn{
+
+padding:8px 12px;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+margin:2px;
+
+}
+
+.edit{
+
+background:#2196F3;
+
+color:white;
+
+}
+
+.delete{
+
+background:#F44336;
+
+color:white;
+
+}
+
+@media(max-width:700px){
+
+.container{
+
+padding:15px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>👨‍🏫 Teacher Management</h2>
+
+<button class="add-btn">
+
++ Add New Teacher
+
+</button>
+
+</div>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchTeacher"
+placeholder="Search Teacher...">
+
+</div>
+<!-- Teacher Form -->
+
+<form id="teacherForm" class="teacher-form">
+
+<input
+type="text"
+id="teacherName"
+placeholder="Teacher Full Name"
+required>
+
+<input
+type="email"
+id="teacherEmail"
+placeholder="Email Address"
+required>
+
+<input
+type="tel"
+id="teacherMobile"
+placeholder="Mobile Number"
+required>
+
+<select
+id="teacherCourse"
+required>
+
+<option value="">Assign Course</option>
+
+<option>LDC</option>
+
+<option>Rajasthan GK</option>
+
+<option>CET</option>
+
+<option>REET</option>
+
+<option>Patwari</option>
+
+<option>Police</option>
+
+<option>SSC</option>
+
+<option>Banking</option>
+
+</select>
+
+<select
+id="teacherStatus">
+
+<option value="Active">Active</option>
+
+<option value="Inactive">Inactive</option>
+
+</select>
+
+<button type="submit">
+
+Save Teacher
+
+</button>
+
+</form>
+
+<!-- Teacher List -->
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Teacher ID</th>
+
+<th>Name</th>
+
+<th>Email</th>
+
+<th>Mobile</th>
+
+<th>Course</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="teacherTable">
+
+<tr>
+
+<td>TCH001</td>
+
+<td>Demo Teacher</td>
+
+<td>teacher@example.com</td>
+
+<td>9876543210</td>
+
+<td>LDC</td>
+
+<td>Active</td>
+
+<td>
+
+<button class="action-btn edit">
+
+Edit
+
+</button>
+
+<button class="action-btn delete">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<footer style="margin-top:30px;text-align:center;color:#777;">
+
+© 2026 PMD Learning Centre | Teacher Management
+
+</footer>
+
+<script type="module" src="firebase.js"></script>
+
+<script src="teachers.js"></script>
+<script type="module">
+
+import { auth } from "./firebase.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+// =============================
+// Admin Authentication
+// =============================
+
+onAuthStateChanged(auth,(user)=>{
+
+    if(!user){
+
+        window.location.href="login.html";
+
+    }
+
+});
+
+// =============================
+// Search Teacher
+// =============================
+
+const searchInput=document.getElementById("searchTeacher");
+
+const teacherTable=document.getElementById("teacherTable");
+
+searchInput.addEventListener("keyup",()=>{
+
+    const value=searchInput.value.toLowerCase();
+
+    const rows=teacherTable.querySelectorAll("tr");
+
+    rows.forEach(row=>{
+
+        row.style.display=row.innerText
+        .toLowerCase()
+        .includes(value)
+
+        ? ""
+
+        : "none";
+
+    });
+
+});
+
+// =============================
+// Add Teacher Button
+// =============================
+
+document.querySelector(".add-btn")
+
+.addEventListener("click",()=>{
+
+    document.getElementById("teacherName").focus();
+
+});
+
+// =============================
+// Form Validation
+// =============================
+
+document.getElementById("teacherForm")
+
+.addEventListener("submit",(e)=>{
+
+    e.preventDefault();
+
+    alert(
+
+    "Teacher data will be saved to Firebase."
+
+    );
+
+});
+
+// =============================
+// Console
+// =============================
+
+console.log(
+
+"%cPMD Learning Centre V2",
+
+"color:#F57C00;font-size:18px;font-weight:bold;"
+
+);
+
+console.log(
+
+"Teacher Management Ready."
+
+);
+
+</script>
+
+</body>
+
+</html>
