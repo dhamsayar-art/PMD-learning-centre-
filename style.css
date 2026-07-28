@@ -237,3 +237,185 @@ nav ul li a:hover{
     border-radius:10px;
     cursor:pointer;
 }
+/* ======================================
+   COURSES SECTION
+====================================== */
+
+.courses{
+    padding:70px 8%;
+    background:#fff;
+}
+
+.section-title{
+    text-align:center;
+    font-size:38px;
+    margin-bottom:40px;
+    color:#222;
+}
+
+.course-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.course-card{
+    background:#fff;
+    border-radius:15px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    transition:.4s;
+}
+
+.course-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+}
+
+.course-card i{
+    font-size:50px;
+    color:#FFD700;
+    margin-bottom:20px;
+}
+
+.course-card h3{
+    margin-bottom:12px;
+    font-size:24px;
+}
+
+.course-card p{
+    color:#666;
+    margin-bottom:20px;
+}
+
+.course-card a{
+    display:inline-block;
+    padding:12px 22px;
+    background:#111;
+    color:#fff;
+    text-decoration:none;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.course-card a:hover{
+    background:#FFD700;
+    color:#111;
+}
+
+/* ======================================
+   WHY CHOOSE PMD
+====================================== */
+
+.why{
+    background:#f8f9fa;
+    padding:70px 8%;
+}
+
+.why-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.why-box{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.why-box:hover{
+    background:#FFD700;
+    transform:scale(1.05);
+}
+
+.why-box h3{
+    margin-bottom:15px;
+    font-size:22px;
+}
+
+.why-box p{
+    color:#444;
+}
+
+/* ======================================
+   COUNTER
+====================================== */
+
+.counter{
+    background:#111;
+    color:#fff;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+    padding:60px 8%;
+    text-align:center;
+}
+
+.counter-box h2{
+    font-size:45px;
+    color:#FFD700;
+    margin-bottom:10px;
+}
+
+.counter-box p{
+    font-size:18px;
+}
+
+/* ======================================
+   HOVER EFFECTS
+====================================== */
+
+button{
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* ======================================
+   RESPONSIVE
+====================================== */
+
+@media(max-width:768px){
+
+header{
+    flex-direction:column;
+    gap:15px;
+}
+
+nav ul{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+}
+
+.hero-text h1{
+    font-size:38px;
+}
+
+.search-box input{
+    width:95%;
+    margin-bottom:10px;
+}
+
+.search-box button{
+    margin-left:0;
+    width:95%;
+}
+
+}
