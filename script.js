@@ -74,7 +74,7 @@ alert("Upload Function Working");
 
   if (error) {
     document.getElementById("status").innerHTML = "❌ Upload Failed";
-    console.log(error);
+    alert(JSON.stringify(error));
   } else {
     document.getElementById("status").innerHTML = "✅ PDF Upload Success";
   }
