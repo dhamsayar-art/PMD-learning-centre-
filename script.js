@@ -147,3 +147,146 @@ deferredPrompt.prompt();
 });
 
 }
+// ======================================
+// PDF Upload (Supabase)
+// ======================================
+
+async function uploadPDF() {
+
+    const file = document.getElementById("pdfFile")?.files[0];
+
+    if (!file) {
+        alert("Please Select PDF");
+        return;
+    }
+
+    document.getElementById("status").innerHTML = "Uploading...";
+
+    const { data, error } = await supabase.storage
+        .from("notes")
+        .upload(file.name, file, {
+            upsert: true
+        });
+
+    if (error) {
+        console.error(error);
+        document.getElementById("status").innerHTML =
+            "❌ Upload Failed : " + error.message;
+    } else {
+
+        document.getElementById("status").innerHTML =
+            "✅ PDF Uploaded Successfully";
+
+        alert("PDF Uploaded Successfully");
+
+    }
+
+}
+
+// ======================================
+// Login
+// ======================================
+
+function loginStudent(){
+
+let email=document.getElementById("email").value;
+let password=document.getElementById("password").value;
+
+if(email=="" || password==""){
+
+alert("Please Fill All Details");
+
+return;
+
+}
+
+window.location.href="dashboard.html";
+
+}
+
+// ======================================
+// Register
+// ======================================
+
+function registerStudent(){
+
+alert("Registration Successful");
+
+window.location.href="login.html";
+
+}
+
+// ======================================
+// Admin Login
+// ======================================
+
+function adminLogin(){
+
+let pass=prompt("Enter Admin Password");
+
+if(pass==="PMD123"){
+
+window.location.href="admin.html";
+
+}
+else{
+
+alert("Wrong Password");
+
+}
+
+}
+
+// ======================================
+// Logout
+// ======================================
+
+function logout(){
+
+if(confirm("Logout?")){
+
+window.location.href="login.html";
+
+}
+
+}
+
+// ======================================
+// Notice
+// ======================================
+
+function addNotice(){
+
+let notice=document.getElementById("noticeText");
+
+if(notice){
+
+alert("Notice Added");
+
+notice.value="";
+
+}
+
+}
+
+// ======================================
+// Quiz Demo
+// ======================================
+
+function startQuiz(){
+
+alert("Quiz Starting...");
+
+window.location.href="quiz.html";
+
+}
+
+// ======================================
+// Download Notes
+// ======================================
+
+function downloadNotes(link){
+
+window.open(link,"_blank");
+
+}
