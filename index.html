@@ -1,398 +1,171 @@
-<section class="founder">
-    <img src="images/founder.png" alt="Founder">
 
-    <div class="founder-text">
-        <h2>Director's Message</h2>
-        <h3>PMD Learning Centre</h3>
 
-        <p>
-            PMD Learning Centre में आपका स्वागत है।
-            हमारा उद्देश्य प्रत्येक विद्यार्थी को गुणवत्तापूर्ण शिक्षा
-            प्रदान करना और प्रतियोगी परीक्षाओं में सफलता दिलाना है।
-        </p>
-    </div>
-</section>
-<a href="admin.html">
-  <button class="admin-btn">👨‍💼 Admin Panel</button>
-</a>
-<section class="courses">
-
-<h2>Popular Courses</h2>
-
-<div class="card">📖 Rajasthan GK</div>
-<div class="card">📐 Mathematics</div>
-<div class="card">🔬 Science</div>
-<div class="card">💻 Computer</div>
-<div class="card">🏛 History</div>
-<div class="card">🌍 Geography</div>
-
-</section>
-<button onclick="darkMode()">🌙 Dark Mode</button>
-
-<section class="notes">
-
-<h2>Latest Notes</h2>
-
-<div class="card">📄 Class 10 Notes</div>
-<div class="card">📄 Class 12 Notes</div>
-<div class="card">📄 LDC Notes</div>
-
-</section>
-<section class="hero">
-  <div class="hero-content">
-    <h1>Welcome to PMD Learning Centre</h1>
-    <p>Best Coaching for Rajasthan LDC, CET, REET, GK, Mathematics & Science</p>
-
-    <a href="#courses" class="btn">Explore Courses</a>
-  </div>
-</section>
-<input type="text" id="searchInput" placeholder="🔍 Subject खोजें">
-<button onclick="searchSubject()">Search</button>
-
-<section class="quiz">
-
-<h2>Daily Quiz</h2>
-
-<div class="card">❓ Start Today's Quiz</div>
-
-</section>
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PMD Learning Centre</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMD Learning Centre</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 </head>
-<a href="https://wa.me/919928045248" class="whatsapp-btn">💬</a>
-<a href="#" class="top-btn">⬆</a>
-<a href="contact.html" class="btn">Contact Us</a>
+
 <body>
+
+<!-- Loader -->
+
 <div id="loader">
-<h2>PMD Learning Centre</h2>
-<p>Loading...</p>
+<div class="spinner"></div>
 </div>
 
-<header class="header">
+<!-- Header -->
+
+<header>
 
 <div class="logo">
 
-<img src="images/logo.png.png" width="60">
+<img src="images/logo.png" alt="PMD Logo">
 
-<h1>PMD Learning Centre</h1>
+<h2>PMD Learning Centre</h2>
+
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="courses.html">Courses</a></li>
+
+<li><a href="notes.html">Notes</a></li>
+
+<li><a href="quiz.html">Quiz</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<div class="nav-btn">
+
+<a href="login.html">
+
+<button class="login-btn">
+
+<i class="fa-solid fa-user"></i>
+
+Student Login
+
+</button>
+
+</a>
+
+<a href="admin.html">
+
+<button class="admin-btn">
+
+<i class="fa-solid fa-lock"></i>
+
+Admin
+
+</button>
+
+</a>
 
 </div>
 
 </header>
-<section class="notification">
-<section class="counter">
 
-<h2>👨‍🎓 Students Joined</h2>
-
-<h1 id="count">5000+</h1>
-
-</section>
-
-<marquee>
-📢 New LDC Notes Available | 🔥 Daily Quiz Updated | 📚 Free PDF Download | 🎯 REET Test Series Coming Soon
-</marquee>
-
-</section>
-<section class="hero-banner">
-<section class="slider">
-
-<img id="slider" src="images/banner.png" alt="Banner">
-
-</section>
-<section class="notice">
-<section class="featured">
-
-<h2>🔥 Featured Courses</h2>
-<section class="exam">
-<section class="current-affairs">
-<section class="top-students">
-
-<h2>🏆 Top Students</h2>
-<section class="stats">
-
-<h2>📊 PMD Learning Centre</h2>
-<section id="toppers" class="toppers">
-  <h2>🏆 Our Toppers</h2>
-
-  <div class="topper-card">
-    <img src="images/topper1.jpg" alt="Topper">
-    <h3>Student Name</h3>
-    <p>Rajasthan LDC - Selected</p>
-  </div>
-
-  <div class="topper-card">
-    <img src="images/topper2.jpg" alt="Topper">
-    <h3>Student Name</h3>
-    <p>CET - Excellent Score</p>
-  </div>
-
-  <div class="topper-card">
-    <img src="images/topper3.jpg" alt="Topper">
-    <h3>Student Name</h3>
-    <p>REET - Qualified</p>
-  </div>
-</section>
-
-<div class="stat-box">
-<h3>5000+</h3>
-<p>Students</p>
-</div>
-
-<div class="stat-box">
-<h3>100+</h3>
-<p>Notes</p>
-</div>
-
-<div class="stat-box">
-<h3>50+</h3>
-<p>Quiz</p>
-</div>
-
-<div class="stat-box">
-<h3>20+</h3>
-<p>Subjects</p>
-</div>
-
-</section>
-<section class="testimonials">
-<section class="faq">
-
-<h2>❓ अक्सर पूछे जाने वाले प्रश्न</h2>
-
-<div class="faq-box">
-<h3>क्या PMD Learning Centre फ्री है?</h3>
-<p>हाँ, अधिकांश नोट्स और क्विज़ निःशुल्क उपलब्ध हैं।</p>
-</div>
-
-<div class="faq-box">
-<h3>क्या मैं मोबाइल से पढ़ सकता हूँ?</h3>
-<p>हाँ, यह वेबसाइट मोबाइल पर भी अच्छी तरह चलेगी।</p>
-</div>
-
-</section>
-
-<h2>💬 छात्रों की राय</h2>
-
-<div class="testimonial-card">
-<h3>⭐⭐⭐⭐⭐</h3>
-<p>"PMD Learning Centre से मुझे LDC की तैयारी में बहुत मदद मिली।"</p>
-<h4>- राहुल</h4>
-</div>
-
-<div class="testimonial-card">
-<h3>⭐⭐⭐⭐⭐</h3>
-<p>"Free Notes और Quiz बहुत अच्छे हैं।"</p>
-<h4>- पूजा</h4>
-</div>
-
-</section>
-
-<div class="student-card">
-<h3>🥇 Rahul Sharma</h3>
-<p>LDC Mock Test - 98%</p>
-</div>
-
-<div class="student-card">
-<h3>🥈 Priya Verma</h3>
-<p>REET Mock Test - 96%</p>
-</div>
-
-<div class="student-card">
-<h3>🥉 Mohit Kumar</h3>
-<p>Rajasthan GK - 95%</p>
-</div>
-
-</section>
-
-<h2>📰 Daily Current Affairs</h2>
-
-<div class="news-card">
-<h3>26 जुलाई 2026</h3>
-<p>आज की महत्वपूर्ण खबरें यहाँ दिखाई देंगी।</p>
-</div>
-
-<div class="news-card">
-<h3>राजस्थान अपडेट</h3>
-<p>राजस्थान की परीक्षाओं और सरकारी योजनाओं की जानकारी।</p>
-</div>
-
-</section>
-
-<h2>📅 Upcoming Exams</h2>
-
-<ul>
-<li>Rajasthan LDC</li>
-<li>REET 2026</li>
-<li>CET Graduation</li>
-<li>Patwari</li>
-<li>Police Constable</li>
-</ul>
-
-</section>
-
-<div class="course-box">
-<h3>📚 Rajasthan LDC</h3>
-<p>Complete Notes + MCQ + Test Series</p>
-</div>
-
-<div class="course-box">
-<h3>👨‍🏫 REET</h3>
-<p>Notes + Previous Papers + Quiz</p>
-</div>
-
-<div class="course-box">
-<h3>🏛 Rajasthan GK</h3>
-<p>Daily Practice + PDF Notes</p>
-</div>
-
-<div class="course-box">
-<h3>💻 Computer Course</h3>
-<p>Basic to Advanced</p>
-</div>
-
-</section>
-<h2>📢 Latest Notice</h2>
-
-<marquee>
-🎉 PMD Learning Centre में जल्द ही Free Notes, Daily Quiz, Current Affairs और LDC Test Series उपलब्ध होगी।
-</marquee>
-
-</section>
-
-<h1>🎓 PMD Learning Centre</h1>
-
-<p>Free Notes | Free Quiz | PDF | Current Affairs | LDC | REET | Rajasthan GK</p>
-
-<a href="register.html" class="start-btn">🚀 Start Learning</a>
-
-</section>
-
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Subjects</a>
-    <a href="notes.html">Notes</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="contact.html">Contact</a>
-</nav>
-<section class="search-section"
-<input type="text" id="searchInput" placeholder="🔍 Subject खोजें...">
-
-<button onclick="searchSubject()">Search</button>
-
-<a href="login.html">
-<button>Login</button>
-</a>
-
-</section>
+<!-- Hero Section -->
 
 <section class="hero">
-    <h2>Welcome to PMD Learning Centre</h2>
-    <p>Free Notes | Free Quiz | Free PDF | Current Affairs</p>
-    <button>Start Learning</button>
-</section>
 
-<a href="subjects.html">Subjects</a>
+<div class="hero-text">
 
-    <div class="card">📘 हिंदी</div>
-    <div class="card">📗 अंग्रेज़ी</div>
-    <div class="card">📙 गणित</div>
-    <div class="card">📕 विज्ञान</div>
-    <div class="card">🏛 इतिहास</div>
-    <div class="card">🌍 भूगोल</div>
-</section>
-<section class="app-download">
+<h1>
 
-<h2>📱 PMD Learning Centre App</h2>
+Welcome to
 
-<p>Android App जल्द ही उपलब्ध होगा।</p>
+<span>PMD Learning Centre</span>
 
-<button>Coming Soon</button>
+</h1>
 
-</section>
+<p>
 
-<footer>
-<img src="images/logo.png.png" alt="PMD Learning Centre Logo" width="180">
+Learn Today,
 
-<h2>PMD Learning Centre</h2>
+Lead Tomorrow
 
-<p>📚 Learn • Practice • Succeed</p>
+</p>
 
-<p>📧 Email: pmdlearningcentre@gmail.com</p>
+<p>
 
-<p>📱 WhatsApp: +91-9928045248</p>
+Free Notes • Quiz • Test Series • PDF • Online Learning
 
-<p>© 2026 PMD Learning Centre | All Rights Reserved</p>
-<div class="social-links">
-  <a href="#">📘 Facebook</a>
-  <a href="#">📸 Instagram</a>
-  <a href="#">▶️ YouTube</a>
-  <a href="#">💬 Telegram</a>
+</p>
+
+<div class="hero-buttons">
+
+<a href="register.html">
+
+<button class="start-btn">
+
+Get Started
+
+</button>
+
+</a>
+
+<a href="notes.html">
+
+<button class="note-btn">
+
+Free Notes
+
+</button>
+
+</a>
+
 </div>
 
-</footer>
-<footer>
-    <a href="admin.html">
-        <button class="admin-btn">👨‍💼 Admin Login</button>
-    </a>
-</footer>
-<footer>
-    <h3>PMD Learning Centre</h3>
+</div>
 
-    <p>Quality Education For Bright Future</p>
+<div class="hero-image">
 
-    <p>📍 Jodhpur, Rajasthan</p>
+<img src="images/banner.png" id="slider">
 
-    <p>📞 +91 9928045248</p>
+</div>
 
-    <p>© 2026 PMD Learning Centre. All Rights Reserved.</p>
-</footer>
-
-<script src="script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
-<script src="script.js"></script>
-</body>
-</html>
-<section class="founder">
-    <img src="images/founder 2.png" alt="Founder">
-    <div>
-        <h2>About Founder</h2>
-        <h3>Dharmendra Solanki</h3>
-        <p>
-            Founder of PMD Learning Centre. Our mission is to provide
-            Free Notes, Daily Quiz, Current Affairs, Test Series and
-            quality education for every student.
-        </p>
-    </div>
 </section>
-<section id="admission" class="admission">
-  <h2>Online Admission</h2>
 
-  <form>
-    <input type="text" placeholder="Student Name" required>
+<!-- Search -->
 
-    <input type="tel" placeholder="Mobile Number" required>
+<section class="search-box">
 
-    <input type="email" placeholder="Email">
+<h2>Search Your Course</h2>
 
-    <select>
-      <option>Select Course</option>
-      <option>Rajasthan GK</option>
-      <option>Mathematics</option>
-      <option>Science</option>
-      <option>LDC</option>
-      <option>CET</option>
-      <option>REET</option>
-    </select>
+<input
+type="text"
+id="searchInput"
+placeholder="Search Course...">
 
-    <textarea placeholder="Address"></textarea>
+<button onclick="searchSubject()">
 
-    <button type="submit">Submit Admission</button>
-  </form>
+Search
+
+</button>
+
 </section>
