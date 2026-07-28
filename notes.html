@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notes Management | PMD Learning Centre</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f6fa;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.header h2{
+color:#222;
+}
+
+.add-btn{
+background:#F57C00;
+color:#fff;
+border:none;
+padding:12px 20px;
+border-radius:10px;
+cursor:pointer;
+font-size:15px;
+font-weight:600;
+}
+
+.search-box{
+margin-bottom:25px;
+}
+
+.search-box input{
+width:100%;
+padding:14px;
+border:2px solid #ddd;
+border-radius:10px;
+outline:none;
+font-size:15px;
+}
+
+.notes-form{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:15px;
+
+background:#fff;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+margin-bottom:30px;
+
+}
+
+.notes-form input,
+.notes-form select,
+.notes-form textarea{
+
+padding:13px;
+
+border:2px solid #ddd;
+
+border-radius:10px;
+
+outline:none;
+
+font-size:15px;
+
+}
+
+.notes-form textarea{
+
+resize:vertical;
+min-height:100px;
+
+}
+
+.notes-form button{
+
+background:#F57C00;
+
+color:#fff;
+
+border:none;
+
+padding:14px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:15px;
+
+font-weight:600;
+
+}
+
+.table-box{
+
+background:#fff;
+
+padding:20px;
+
+border-radius:18px;
+
+overflow:auto;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+th{
+
+background:#F57C00;
+
+color:#fff;
+
+padding:15px;
+
+}
+
+td{
+
+padding:15px;
+
+text-align:center;
+
+border-bottom:1px solid #eee;
+
+}
+
+.action-btn{
+
+padding:8px 12px;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+margin:2px;
+
+}
+
+.edit{
+
+background:#2196F3;
+color:#fff;
+
+}
+
+.delete{
+
+background:#F44336;
+color:#fff;
+
+}
+
+.download{
+
+background:#4CAF50;
+color:#fff;
+
+}
+
+@media(max-width:700px){
+
+.container{
+
+padding:15px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>📄 Notes Management</h2>
+
+<button class="add-btn">
+
++ Upload Notes
+
+</button>
+
+</div>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchNotes"
+placeholder="Search Notes...">
+
+</div>
+<!-- Notes Upload Form -->
+
+<form id="notesForm" class="notes-form">
+
+<input
+type="text"
+id="noteTitle"
+placeholder="Notes Title"
+required>
+
+<select
+id="noteCourse"
+required>
+
+<option value="">Select Course</option>
+
+<option>LDC</option>
+
+<option>Rajasthan GK</option>
+
+<option>CET</option>
+
+<option>REET</option>
+
+<option>Patwari</option>
+
+<option>Police</option>
+
+<option>SSC</option>
+
+<option>Banking</option>
+
+</select>
+
+<select
+id="noteSubject"
+required>
+
+<option value="">Select Subject</option>
+
+<option>General Knowledge</option>
+
+<option>Mathematics</option>
+
+<option>Reasoning</option>
+
+<option>Science</option>
+
+<option>Computer</option>
+
+<option>Hindi</option>
+
+<option>English</option>
+
+</select>
+
+<input
+type="file"
+id="noteFile"
+accept=".pdf"
+required>
+
+<textarea
+id="noteDescription"
+placeholder="Notes Description"
+required></textarea>
+
+<select
+id="noteStatus">
+
+<option value="Published">Published</option>
+
+<option value="Draft">Draft</option>
+
+</select>
+
+<button type="submit">
+
+Upload Notes
+
+</button>
+
+</form>
+
+<!-- Notes List -->
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Notes ID</th>
+
+<th>Title</th>
+
+<th>Course</th>
+
+<th>Subject</th>
+
+<th>Status</th>
+
+<th>Download</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="notesTable">
+
+<tr>
+
+<td>NTS001</td>
+
+<td>Rajasthan GK Notes</td>
+
+<td>LDC</td>
+
+<td>General Knowledge</td>
+
+<td>Published</td>
+
+<td>
+
+<button class="action-btn download">
+
+Download
+
+</button>
+
+</td>
+
+<td>
+
+<button class="action-btn edit">
+
+Edit
+
+</button>
+
+<button class="action-btn delete">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<footer
+style="margin-top:30px;text-align:center;color:#777;">
+
+© 2026 PMD Learning Centre | Notes Management
+
+</footer>
+
+<script type="module" src="firebase.js"></script>
+
+<script src="notes.js"></script>
+<script type="module">
+
+import { auth } from "./firebase.js";
+
+import {
+    onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+// =============================
+// Admin Authentication
+// =============================
+
+onAuthStateChanged(auth,(user)=>{
+
+    if(!user){
+
+        window.location.href="login.html";
+
+    }
+
+});
+
+// =============================
+// Search Notes
+// =============================
+
+const searchInput =
+document.getElementById("searchNotes");
+
+const notesTable =
+document.getElementById("notesTable");
+
+searchInput.addEventListener("keyup",()=>{
+
+    const value =
+    searchInput.value.toLowerCase();
+
+    const rows =
+    notesTable.querySelectorAll("tr");
+
+    rows.forEach(row=>{
+
+        row.style.display =
+        row.innerText
+        .toLowerCase()
+        .includes(value)
+
+        ? ""
+
+        : "none";
+
+    });
+
+});
+
+// =============================
+// Upload Form Validation
+// =============================
+
+document
+.getElementById("notesForm")
+
+.addEventListener("submit",(e)=>{
+
+    e.preventDefault();
+
+    alert(
+    "Notes will be uploaded to Firebase Storage."
+    );
+
+});
+
+// =============================
+// Upload Button
+// =============================
+
+document.querySelector(".add-btn")
+
+.addEventListener("click",()=>{
+
+    document
+    .getElementById("noteTitle")
+    .focus();
+
+});
+
+// =============================
+// Download Button
+// =============================
+
+notesTable.addEventListener("click",(e)=>{
+
+    if(
+    e.target.classList.contains("download")
+    ){
+
+        alert(
+        "PDF download will start after Firebase Storage integration."
+        );
+
+    }
+
+});
+
+// =============================
+// Console
+// =============================
+
+console.log(
+
+"%cPMD Learning Centre V2",
+
+"color:#F57C00;font-size:18px;font-weight:bold;"
+
+);
+
+console.log(
+
+"Notes Management Ready."
+
+);
+
+</script>
+
+</body>
+
+</html>
