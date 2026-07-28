@@ -1,21 +1,66 @@
-// Firebase SDK
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+// ======================================
+// PMD Learning Centre V2
+// firebase.js
+// ======================================
+
+// Firebase App
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+
+// Firebase Authentication
 import {
-  getAuth
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+    getAuth,
+    GoogleAuthProvider
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+// Firestore Database
+import {
+    getFirestore
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+// Firebase Storage
+import {
+    getStorage
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
+
+// ======================================
+// Firebase Configuration
+// ======================================
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB2CYY9qO_1XTxLzEw3j3mpv4EfQMLcH64",
-  authDomain: "pmd-learning-centre-6b4a5.firebaseapp.com",
-  projectId: "pmd-learning-centre-6b4a5",
-  storageBucket: "pmd-learning-centre-6b4a5.firebasestorage.app",
-  messagingSenderId: "191436199922",
-  appId: "1:191436199922:web:ec23b8dd0e7a7178de3d6b"
+
+    apiKey: "YOUR_API_KEY",
+
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+
+    projectId: "YOUR_PROJECT_ID",
+
+    storageBucket: "YOUR_PROJECT.appspot.com",
+
+    messagingSenderId: "YOUR_SENDER_ID",
+
+    appId: "YOUR_APP_ID",
+
+    measurementId: "YOUR_MEASUREMENT_ID"
+
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-import { getFirestore } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+// ======================================
+// Initialize Firebase
+// ======================================
 
-export const db = getFirestore(app);
-import { auth, db } from "./firebase.js";
+const app = initializeApp(firebaseConfig);
+
+// Authentication
+const auth = getAuth(app);
+
+// Firestore
+const db = getFirestore(app);
+
+// Storage
+const storage = getStorage(app);
+
+// Google Login
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
+    prompt: "select_account"
+});
