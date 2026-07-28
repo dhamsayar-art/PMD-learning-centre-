@@ -1,33 +1,558 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz - PMD Learning Centre</title>
-<link rel="stylesheet" href="style.css">
+
+<title>Quiz Management | PMD Learning Centre</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f6fa;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.header h2{
+color:#222;
+}
+
+.add-btn{
+background:#F57C00;
+color:#fff;
+border:none;
+padding:12px 20px;
+border-radius:10px;
+cursor:pointer;
+font-size:15px;
+font-weight:600;
+}
+
+.search-box{
+margin-bottom:25px;
+}
+
+.search-box input{
+width:100%;
+padding:14px;
+border:2px solid #ddd;
+border-radius:10px;
+outline:none;
+font-size:15px;
+}
+
+.quiz-form{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:15px;
+
+background:#fff;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+margin-bottom:30px;
+
+}
+
+.quiz-form input,
+.quiz-form select,
+.quiz-form textarea{
+
+padding:13px;
+
+border:2px solid #ddd;
+
+border-radius:10px;
+
+outline:none;
+
+font-size:15px;
+
+}
+
+.quiz-form textarea{
+
+resize:vertical;
+min-height:100px;
+
+}
+
+.quiz-form button{
+
+background:#F57C00;
+
+color:#fff;
+
+border:none;
+
+padding:14px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:15px;
+
+font-weight:600;
+
+}
+
+.table-box{
+
+background:#fff;
+
+padding:20px;
+
+border-radius:18px;
+
+overflow:auto;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+th{
+
+background:#F57C00;
+
+color:white;
+
+padding:15px;
+
+}
+
+td{
+
+padding:15px;
+
+text-align:center;
+
+border-bottom:1px solid #eee;
+
+}
+
+.action-btn{
+
+padding:8px 12px;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+margin:2px;
+
+}
+
+.edit{
+
+background:#2196F3;
+
+color:white;
+
+}
+
+.delete{
+
+background:#F44336;
+
+color:white;
+
+}
+
+.start{
+
+background:#4CAF50;
+
+color:white;
+
+}
+
+@media(max-width:700px){
+
+.container{
+
+padding:15px;
+
+}
+
+}
+
+</style>
+
 </head>
+
 <body>
 
-<header>
-<h1>📝 Daily Quiz</h1>
-</header>
+<div class="container">
 
-<div class="login-box">
+<div class="header">
 
-<h2>सामान्य ज्ञान Quiz</h2>
+<h2>📝 Quiz Management</h2>
 
-<p><b>प्रश्न 1:</b> भारत की राजधानी क्या है?</p>
+<button class="add-btn">
 
-<input type="radio" name="q1"> जयपुर<br>
-<input type="radio" name="q1"> मुंबई<br>
-<input type="radio" name="q1"> नई दिल्ली<br>
-<input type="radio" name="q1"> भोपाल<br><br>
++ Create Quiz
 
-<a href="result.html">
-<button>Submit Quiz</button>
-</a>
+</button>
 
 </div>
 
+<div class="search-box">
+
+<input
+type="text"
+id="searchQuiz"
+placeholder="Search Quiz...">
+
+</div>
+<!-- Quiz Form -->
+
+<form id="quizForm" class="quiz-form">
+
+<input
+type="text"
+id="quizTitle"
+placeholder="Quiz Title"
+required>
+
+<select
+id="quizCourse"
+required>
+
+<option value="">Select Course</option>
+
+<option>LDC</option>
+
+<option>Rajasthan GK</option>
+
+<option>CET</option>
+
+<option>REET</option>
+
+<option>Patwari</option>
+
+<option>Police</option>
+
+<option>SSC</option>
+
+<option>Banking</option>
+
+</select>
+
+<textarea
+id="question"
+placeholder="Enter Question"
+required></textarea>
+
+<input
+type="text"
+id="option1"
+placeholder="Option A"
+required>
+
+<input
+type="text"
+id="option2"
+placeholder="Option B"
+required>
+
+<input
+type="text"
+id="option3"
+placeholder="Option C"
+required>
+
+<input
+type="text"
+id="option4"
+placeholder="Option D"
+required>
+
+<select
+id="correctAnswer"
+required>
+
+<option value="">Correct Answer</option>
+
+<option value="A">Option A</option>
+
+<option value="B">Option B</option>
+
+<option value="C">Option C</option>
+
+<option value="D">Option D</option>
+
+</select>
+
+<input
+type="number"
+id="marks"
+placeholder="Marks"
+required>
+
+<input
+type="number"
+id="timeLimit"
+placeholder="Time Limit (Minutes)"
+required>
+
+<select
+id="quizStatus">
+
+<option value="Published">Published</option>
+
+<option value="Draft">Draft</option>
+
+</select>
+
+<button type="submit">
+
+Save Quiz
+
+</button>
+
+</form>
+
+<!-- Quiz List -->
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Quiz ID</th>
+
+<th>Title</th>
+
+<th>Course</th>
+
+<th>Marks</th>
+
+<th>Time</th>
+
+<th>Status</th>
+
+<th>Start</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="quizTable">
+
+<tr>
+
+<td>QZ001</td>
+
+<td>Rajasthan GK Test</td>
+
+<td>LDC</td>
+
+<td>50</td>
+
+<td>30 Min</td>
+
+<td>Published</td>
+
+<td>
+
+<button class="action-btn start">
+
+Start
+
+</button>
+
+</td>
+
+<td>
+
+<button class="action-btn edit">
+
+Edit
+
+</button>
+
+<button class="action-btn delete">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<footer
+style="margin-top:30px;text-align:center;color:#777;">
+
+© 2026 PMD Learning Centre | Quiz Management
+
+</footer>
+
+<script type="module" src="firebase.js"></script>
+
+<script src="quiz.js"></script>
+<script type="module">
+
+import { auth } from "./firebase.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+// =============================
+// Admin Authentication
+// =============================
+
+onAuthStateChanged(auth,(user)=>{
+
+    if(!user){
+
+        window.location.href="login.html";
+
+    }
+
+});
+
+// =============================
+// Search Quiz
+// =============================
+
+const searchInput = document.getElementById("searchQuiz");
+const quizTable = document.getElementById("quizTable");
+
+searchInput.addEventListener("keyup",()=>{
+
+    const value = searchInput.value.toLowerCase();
+
+    const rows = quizTable.querySelectorAll("tr");
+
+    rows.forEach(row=>{
+
+        row.style.display = row.innerText
+            .toLowerCase()
+            .includes(value)
+            ? ""
+            : "none";
+
+    });
+
+});
+
+// =============================
+// Create Quiz Button
+// =============================
+
+document.querySelector(".add-btn")
+
+.addEventListener("click",()=>{
+
+    document.getElementById("quizTitle").focus();
+
+});
+
+// =============================
+// Quiz Form Validation
+// =============================
+
+document.getElementById("quizForm")
+
+.addEventListener("submit",(e)=>{
+
+    e.preventDefault();
+
+    alert("Quiz will be saved to Firebase.");
+
+});
+
+// =============================
+// Start Quiz Button
+// =============================
+
+quizTable.addEventListener("click",(e)=>{
+
+    if(e.target.classList.contains("start")){
+
+        alert("Quiz Preview will open after quiz.js integration.");
+
+    }
+
+});
+
+// =============================
+// Console
+// =============================
+
+console.log(
+
+"%cPMD Learning Centre V2",
+
+"color:#F57C00;font-size:18px;font-weight:bold;"
+
+);
+
+console.log("Quiz Management Ready");
+
+// =============================
+
+</script>
+
 </body>
+
 </html>
