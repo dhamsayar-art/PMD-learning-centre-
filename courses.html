@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Course Management | PMD Learning Centre</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f6fa;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.header h2{
+color:#222;
+}
+
+.add-btn{
+background:#F57C00;
+color:#fff;
+border:none;
+padding:12px 20px;
+border-radius:10px;
+cursor:pointer;
+font-size:15px;
+font-weight:600;
+}
+
+.search-box{
+margin-bottom:25px;
+}
+
+.search-box input{
+width:100%;
+padding:14px;
+border:2px solid #ddd;
+border-radius:10px;
+outline:none;
+font-size:15px;
+}
+
+.course-form{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:15px;
+
+background:#fff;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+margin-bottom:30px;
+
+}
+
+.course-form input,
+.course-form select,
+.course-form textarea{
+
+padding:13px;
+
+border:2px solid #ddd;
+
+border-radius:10px;
+
+outline:none;
+
+font-size:15px;
+
+}
+
+.course-form textarea{
+
+resize:vertical;
+min-height:100px;
+
+}
+
+.course-form button{
+
+background:#F57C00;
+
+color:#fff;
+
+border:none;
+
+padding:14px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:15px;
+
+font-weight:600;
+
+}
+
+.table-box{
+
+background:#fff;
+
+padding:20px;
+
+border-radius:18px;
+
+overflow:auto;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+th{
+
+background:#F57C00;
+
+color:#fff;
+
+padding:15px;
+
+}
+
+td{
+
+padding:15px;
+
+text-align:center;
+
+border-bottom:1px solid #eee;
+
+}
+
+.action-btn{
+
+padding:8px 12px;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+margin:2px;
+
+}
+
+.edit{
+
+background:#2196F3;
+color:#fff;
+
+}
+
+.delete{
+
+background:#F44336;
+color:#fff;
+
+}
+
+@media(max-width:700px){
+
+.container{
+
+padding:15px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>📚 Course Management</h2>
+
+<button class="add-btn">
+
++ Add New Course
+
+</button>
+
+</div>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchCourse"
+placeholder="Search Course...">
+
+</div>
+<!-- Course Form -->
+
+<form id="courseForm" class="course-form">
+
+<input
+type="text"
+id="courseName"
+placeholder="Course Name"
+required>
+
+<select
+id="courseTeacher"
+required>
+
+<option value="">Assign Teacher</option>
+
+<option>Teacher 1</option>
+
+<option>Teacher 2</option>
+
+<option>Teacher 3</option>
+
+</select>
+
+<input
+type="number"
+id="courseFee"
+placeholder="Course Fee (₹)"
+required>
+
+<input
+type="text"
+id="courseDuration"
+placeholder="Duration (e.g. 6 Months)"
+required>
+
+<textarea
+id="courseDescription"
+placeholder="Course Description"
+required></textarea>
+
+<select
+id="courseStatus">
+
+<option value="Active">Active</option>
+
+<option value="Inactive">Inactive</option>
+
+</select>
+
+<button type="submit">
+
+Save Course
+
+</button>
+
+</form>
+
+<!-- Course List -->
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Course ID</th>
+
+<th>Course Name</th>
+
+<th>Teacher</th>
+
+<th>Fee</th>
+
+<th>Duration</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="courseTable">
+
+<tr>
+
+<td>CRS001</td>
+
+<td>Rajasthan LDC</td>
+
+<td>Teacher 1</td>
+
+<td>₹5,000</td>
+
+<td>6 Months</td>
+
+<td>Active</td>
+
+<td>
+
+<button class="action-btn edit">
+
+Edit
+
+</button>
+
+<button class="action-btn delete">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<footer style="margin-top:30px;text-align:center;color:#777;">
+
+© 2026 PMD Learning Centre | Course Management
+
+</footer>
+
+<script type="module" src="firebase.js"></script>
+
+<script src="courses.js"></script>
+<script type="module">
+
+import { auth } from "./firebase.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+// =============================
+// Admin Authentication
+// =============================
+
+onAuthStateChanged(auth, (user) => {
+
+    if (!user) {
+
+        window.location.href = "login.html";
+
+    }
+
+});
+
+// =============================
+// Search Course
+// =============================
+
+const searchInput = document.getElementById("searchCourse");
+const courseTable = document.getElementById("courseTable");
+
+searchInput.addEventListener("keyup", () => {
+
+    const value = searchInput.value.toLowerCase();
+
+    const rows = courseTable.querySelectorAll("tr");
+
+    rows.forEach(row => {
+
+        row.style.display = row.innerText
+            .toLowerCase()
+            .includes(value)
+            ? ""
+            : "none";
+
+    });
+
+});
+
+// =============================
+// Add Course Button
+// =============================
+
+document.querySelector(".add-btn")
+
+.addEventListener("click", () => {
+
+    document.getElementById("courseName").focus();
+
+});
+
+// =============================
+// Form Validation
+// =============================
+
+document.getElementById("courseForm")
+
+.addEventListener("submit", (e) => {
+
+    e.preventDefault();
+
+    alert(
+        "Course data will be saved to Firebase."
+    );
+
+});
+
+// =============================
+// Console
+// =============================
+
+console.log(
+"%cPMD Learning Centre V2",
+"color:#F57C00;font-size:18px;font-weight:bold;"
+);
+
+console.log("Course Management Ready");
+
+</script>
+
+</body>
+
+</html>
