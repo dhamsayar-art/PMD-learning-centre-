@@ -64,3 +64,74 @@ const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
     prompt: "select_account"
 });
+// ======================================
+// Authentication Settings
+// ======================================
+
+auth.useDeviceLanguage();
+
+// ======================================
+// Export Firebase Services
+// ======================================
+
+export {
+
+    app,
+
+    auth,
+
+    db,
+
+    storage,
+
+    googleProvider
+
+};
+
+// ======================================
+// Firebase Status
+// ======================================
+
+console.log(
+    "%cPMD Learning Centre V2",
+    "color:#F57C00;font-size:18px;font-weight:bold;"
+);
+
+console.log(
+    "Firebase Connected Successfully."
+);
+
+// ======================================
+// Future Modules (Already Ready)
+// ======================================
+
+// Firestore Collections:
+//
+// students
+// teachers
+// admins
+// courses
+// admissions
+// notes
+// quizzes
+// quizResults
+// attendance
+// payments
+// notifications
+// gallery
+// certificates
+//
+// You can use these collections
+// directly in future files.
+
+// ======================================
+// Project Version
+// ======================================
+
+const PMD_VERSION = "2.0 Final";
+
+console.log("Version :", PMD_VERSION);
+
+// ======================================
+// End of firebase.js
+// ======================================
