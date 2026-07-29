@@ -399,3 +399,149 @@ style="margin-top:30px;text-align:center;color:#777;">
 <script type="module" src="firebase.js"></script>
 
 <script src="notice.js"></script>
+<script type="module">
+
+import { auth } from "./firebase.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+// =============================
+// Admin Authentication
+// =============================
+
+onAuthStateChanged(auth,(user)=>{
+
+    if(!user){
+
+        window.location.href="login.html";
+
+    }
+
+});
+
+// =============================
+// Auto Today's Date
+// =============================
+
+const noticeDate =
+document.getElementById("noticeDate");
+
+noticeDate.value =
+new Date().toISOString().split("T")[0];
+
+// =============================
+// Search Notice
+// =============================
+
+const searchInput =
+document.getElementById("searchNotice");
+
+const noticeTable =
+document.getElementById("noticeTable");
+
+searchInput.addEventListener("keyup",()=>{
+
+    const value =
+    searchInput.value.toLowerCase();
+
+    const rows =
+    noticeTable.querySelectorAll("tr");
+
+    rows.forEach(row=>{
+
+        row.style.display =
+        row.innerText.toLowerCase().includes(value)
+        ? ""
+        : "none";
+
+    });
+
+});
+
+// =============================
+// Add Notice Button
+// =============================
+
+document.querySelector(".add-btn")
+
+.addEventListener("click",()=>{
+
+    document
+    .getElementById("noticeTitle")
+    .focus();
+
+});
+
+// =============================
+// Form Validation
+// =============================
+
+document
+.getElementById("noticeForm")
+
+.addEventListener("submit",(e)=>{
+
+    e.preventDefault();
+
+    alert(
+    "Notice will be published to Firebase."
+    );
+
+});
+
+// =============================
+// View Notice
+// =============================
+
+noticeTable.addEventListener("click",(e)=>{
+
+    if(e.target.classList.contains("view")){
+
+        const row =
+        e.target.closest("tr");
+
+        alert(
+
+`PMD Learning Centre
+
+Notice Details
+
+ID : ${row.cells[0].innerText}
+
+Title : ${row.cells[1].innerText}
+
+Audience : ${row.cells[2].innerText}
+
+Priority : ${row.cells[3].innerText}
+
+Date : ${row.cells[4].innerText}
+
+Attachment : ${row.cells[5].innerText}`
+
+        );
+
+    }
+
+});
+
+// =============================
+// Console
+// =============================
+
+console.log(
+
+"%cPMD Learning Centre V2",
+
+"color:#F57C00;font-size:18px;font-weight:bold;"
+
+);
+
+console.log("Notice Board Ready");
+
+</script>
+
+</body>
+
+</html>
