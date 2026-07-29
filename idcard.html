@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Student ID Card | PMD Learning Centre</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f3f4f6;
+padding:30px;
+}
+
+.container{
+max-width:1300px;
+margin:auto;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.header h2{
+color:#F57C00;
+}
+
+.form-box{
+background:#fff;
+padding:25px;
+border-radius:18px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+margin-bottom:30px;
+}
+
+.form-box input,
+.form-box select{
+
+padding:14px;
+border:2px solid #ddd;
+border-radius:10px;
+outline:none;
+font-size:15px;
+
+}
+
+.form-box button{
+
+padding:14px;
+background:#F57C00;
+color:#fff;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+
+}
+
+.id-card{
+
+width:360px;
+margin:auto;
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 5px 20px rgba(0,0,0,.12);
+
+}
+
+.id-header{
+
+background:#F57C00;
+color:#fff;
+padding:18px;
+text-align:center;
+
+}
+
+.id-header img{
+
+width:70px;
+height:70px;
+border-radius:50%;
+background:#fff;
+padding:5px;
+margin-bottom:10px;
+
+}
+
+.id-body{
+
+padding:20px;
+text-align:center;
+
+}
+
+.id-body img{
+
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid #F57C00;
+margin-bottom:15px;
+
+}
+
+.id-body h3{
+
+margin-bottom:8px;
+
+}
+
+.id-body p{
+
+margin:5px 0;
+font-size:15px;
+
+}
+
+.id-footer{
+
+background:#fafafa;
+padding:15px;
+text-align:center;
+
+}
+
+#qrCode{
+
+margin-top:10px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>🆔 Student ID Card Generator</h2>
+
+</div>
+<form id="idCardForm" class="form-box">
+
+<input
+type="text"
+id="studentId"
+placeholder="Student ID"
+required>
+
+<input
+type="text"
+id="studentName"
+placeholder="Student Name"
+required>
+
+<input
+type="text"
+id="fatherName"
+placeholder="Father's Name"
+required>
+
+<input
+type="tel"
+id="mobile"
+placeholder="Mobile Number"
+required>
+
+<select
+id="course"
+required>
+
+<option value="">Select Course</option>
+
+<option>LDC</option>
+<option>Rajasthan GK</option>
+<option>CET</option>
+<option>REET</option>
+<option>Patwari</option>
+<option>Police</option>
+<option>SSC</option>
+<option>Banking</option>
+
+</select>
+
+<input
+type="date"
+id="validUpto"
+required>
+
+<input
+type="file"
+id="studentPhoto"
+accept="image/*">
+
+<button type="submit">
+
+Generate ID Card
+
+</button>
+
+</form>
+
+<!-- ID Card Preview -->
+
+<div class="id-card" id="idCardPreview">
+
+<div class="id-header">
+
+<img
+src="images/logo.png"
+alt="PMD Logo">
+
+<h2>PMD Learning Centre</h2>
+
+<p>Student Identity Card</p>
+
+</div>
+
+<div class="id-body">
+
+<img
+id="photoPreview"
+src="images/default-user.png"
+alt="Student Photo">
+
+<h3 id="previewName">
+
+Student Name
+
+</h3>
+
+<p>
+
+<strong>ID :</strong>
+
+<span id="previewId">
+
+PMD001
+
+</span>
+
+</p>
+
+<p>
+
+<strong>Father :</strong>
+
+<span id="previewFather">
+
+Father Name
+
+</span>
+
+</p>
+
+<p>
+
+<strong>Course :</strong>
+
+<span id="previewCourse">
+
+Course
+
+</span>
+
+</p>
+
+<p>
+
+<strong>Mobile :</strong>
+
+<span id="previewMobile">
+
+0000000000
+
+</span>
+
+</p>
+
+<p>
+
+<strong>Valid Upto :</strong>
+
+<span id="previewValid">
+
+31-12-2026
+
+</span>
+
+</p>
+
+<div id="qrCode">
+
+QR Code
+
+</div>
+
+</div>
+
+<div class="id-footer">
+
+<button id="printIdCard">
+
+🖨️ Print
+
+</button>
+
+<button id="downloadIdCard">
+
+📄 Download PDF
+
+</button>
+
+</div>
+
+</div>
+
+<footer
+style="margin-top:30px;text-align:center;color:#777;">
+
+© 2026 PMD Learning Centre | Student ID Card
+
+</footer>
+
+<script type="module" src="firebase.js"></script>
+<script src="idcard.js"></script>
+<script type="module">
+
+import { auth } from "./firebase.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+// =============================
+// Authentication
+// =============================
+
+onAuthStateChanged(auth,(user)=>{
+
+    if(!user){
+
+        window.location.href="login.html";
+        return;
+
+    }
+
+});
+
+// =============================
+// Elements
+// =============================
+
+const form = document.getElementById("idCardForm");
+
+const studentId = document.getElementById("studentId");
+const studentName = document.getElementById("studentName");
+const fatherName = document.getElementById("fatherName");
+const mobile = document.getElementById("mobile");
+const course = document.getElementById("course");
+const validUpto = document.getElementById("validUpto");
+const studentPhoto = document.getElementById("studentPhoto");
+
+const photoPreview = document.getElementById("photoPreview");
+
+// =============================
+// Live Preview
+// =============================
+
+form.addEventListener("input",()=>{
+
+    document.getElementById("previewId").innerText =
+    studentId.value || "PMD001";
+
+    document.getElementById("previewName").innerText =
+    studentName.value || "Student Name";
+
+    document.getElementById("previewFather").innerText =
+    fatherName.value || "Father Name";
+
+    document.getElementById("previewMobile").innerText =
+    mobile.value || "0000000000";
+
+    document.getElementById("previewCourse").innerText =
+    course.value || "Course";
+
+    document.getElementById("previewValid").innerText =
+    validUpto.value || "31-12-2026";
+
+});
+
+// =============================
+// Photo Preview
+// =============================
+
+studentPhoto.addEventListener("change",()=>{
+
+    const file = studentPhoto.files[0];
+
+    if(file){
+
+        photoPreview.src =
+        URL.createObjectURL(file);
+
+    }
+
+});
+
+// =============================
+// QR Code
+// =============================
+
+document.getElementById("qrCode").innerHTML =
+
+`<img
+src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(location.origin+"/verify.html?id="+studentId.value)}"
+alt="QR Code">`;
+
+// =============================
+// Print
+// =============================
+
+document
+.getElementById("printIdCard")
+.addEventListener("click",()=>{
+
+    window.print();
+
+});
+
+// =============================
+// Download PDF
+// =============================
+
+document
+.getElementById("downloadIdCard")
+.addEventListener("click",()=>{
+
+    alert(
+    "PDF Download will be enabled after idcard.js integration."
+    );
+
+});
+
+// =============================
+// Generate ID
+// =============================
+
+form.addEventListener("submit",(e)=>{
+
+    e.preventDefault();
+
+    alert(
+    "Student ID Card Generated Successfully."
+    );
+
+});
+
+// =============================
+// Console
+// =============================
+
+console.log(
+
+"%cPMD Learning Centre V2",
+
+"color:#F57C00;font-size:18px;font-weight:bold;"
+
+);
+
+console.log("ID Card Page Ready");
+
+</script>
+
+</body>
+
+</html>
