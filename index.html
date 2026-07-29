@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PMD Learning Centre</title>
+
+<meta name="description"
+content="PMD Learning Centre - Student Management System">
+
+<link rel="icon" href="images/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link rel="stylesheet"
+href="css/style.css">
+
+<link rel="stylesheet"
+href="css/responsive.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f6f7fb;
+color:#222;
+}
+
+header{
+
+background:#F57C00;
+
+padding:15px 30px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+color:#fff;
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+}
+
+.logo img{
+
+width:55px;
+
+height:55px;
+
+object-fit:contain;
+
+background:#fff;
+
+border-radius:50%;
+
+padding:5px;
+
+}
+
+nav a{
+
+color:#fff;
+
+text-decoration:none;
+
+margin-left:20px;
+
+font-weight:500;
+
+}
+
+.hero{
+
+padding:80px 20px;
+
+text-align:center;
+
+background:linear-gradient(135deg,#F57C00,#FFB74D);
+
+color:#fff;
+
+}
+
+.hero h1{
+
+font-size:48px;
+
+margin-bottom:15px;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+max-width:700px;
+
+margin:auto;
+
+}
+
+.hero .btn{
+
+display:inline-block;
+
+margin-top:30px;
+
+padding:14px 30px;
+
+background:#fff;
+
+color:#F57C00;
+
+border-radius:10px;
+
+text-decoration:none;
+
+font-weight:700;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+<img src="images/logo.png" alt="PMD Logo">
+
+<h2>PMD Learning Centre</h2>
+
+</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
+<a href="verify.html">Verify</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Welcome to PMD Learning Centre</h1>
+
+<p>
+
+A complete coaching institute management system for students,
+teachers, attendance, fees, reports, certificates and more.
+
+</p>
+
+<a
+href="login.html"
+class="btn">
+
+Get Started
+
+</a>
+
+</section>
+<!-- About Section -->
+
+<section class="about">
+
+<div class="container">
+
+<h2>About PMD Learning Centre</h2>
+
+<p>
+
+PMD Learning Centre is dedicated to providing quality coaching for
+competitive examinations with experienced faculty, modern teaching
+methods and digital learning resources.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- Features -->
+
+<section class="features">
+
+<div class="container">
+
+<h2>Why Choose Us?</h2>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<i class="fas fa-user-graduate"></i>
+
+<h3>Expert Faculty</h3>
+
+<p>Experienced teachers for every subject.</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fas fa-book-open"></i>
+
+<h3>Study Material</h3>
+
+<p>Updated notes, quizzes and practice tests.</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fas fa-laptop"></i>
+
+<h3>Digital Learning</h3>
+
+<p>Online resources with student management.</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fas fa-award"></i>
+
+<h3>Best Results</h3>
+
+<p>Focused preparation for competitive exams.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Courses -->
+
+<section class="courses">
+
+<div class="container">
+
+<h2>Popular Courses</h2>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+<h3>LDC</h3>
+<p>Complete preparation for Rajasthan LDC Exam.</p>
+</div>
+
+<div class="feature-card">
+<h3>Rajasthan GK</h3>
+<p>Comprehensive Rajasthan General Knowledge.</p>
+</div>
+
+<div class="feature-card">
+<h3>CET</h3>
+<p>Complete Common Eligibility Test preparation.</p>
+</div>
+
+<div class="feature-card">
+<h3>REET</h3>
+<p>Teacher eligibility exam preparation.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Contact -->
+
+<section class="contact">
+
+<div class="container">
+
+<h2>Contact Us</h2>
+
+<p><strong>PMD Learning Centre</strong></p>
+
+<p>📍 Mandiyai Khurd Jodhpur, Rajasthan</p>
+
+<p>📞 +91 9928045248</p>
+
+<p>✉️ dhamsayar@gmail.com</p>
+
+<div class="social-links">
+
+<a href="#"><i class="fab fa-facebook"></i></a>
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="  https://youtube.com/@pmd_learning?si=8Y2D0aHD9Hj6o63I"></i></a>
+
+<a href="#"><i class="fab fa-whatsapp"></i></a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Footer -->
+
+<footer>
+
+<div class="container">
+
+<p>
+
+© 2026 PMD Learning Centre. All Rights Reserved.
+
+</p>
+
+</div>
+
+</footer>
+<style>
+
+/* ===========================
+   Extra Styles
+=========================== */
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+.about,
+.features,
+.courses,
+.contact{
+padding:70px 20px;
+text-align:center;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:35px;
+}
+
+.feature-card{
+background:#fff;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.feature-card:hover{
+transform:translateY(-8px);
+}
+
+.feature-card i{
+font-size:45px;
+color:#F57C00;
+margin-bottom:15px;
+}
+
+.social-links{
+margin-top:20px;
+}
+
+.social-links a{
+display:inline-block;
+margin:0 10px;
+font-size:28px;
+color:#F57C00;
+transition:.3s;
+}
+
+.social-links a:hover{
+transform:scale(1.2);
+}
+
+footer{
+background:#222;
+color:#fff;
+text-align:center;
+padding:25px;
+margin-top:40px;
+}
+
+#topBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+display:none;
+background:#F57C00;
+color:#fff;
+border:none;
+padding:14px 18px;
+border-radius:50%;
+cursor:pointer;
+font-size:18px;
+box-shadow:0 5px 12px rgba(0,0,0,.2);
+}
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+gap:15px;
+}
+
+nav{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+nav a{
+margin:8px;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+}
+
+</style>
+
+<button id="topBtn">
+↑
+</button>
+
+<script>
+
+// ==========================
+// Scroll To Top
+// ==========================
+
+const topBtn =
+document.getElementById("topBtn");
+
+window.onscroll = function(){
+
+if(document.documentElement.scrollTop>250){
+
+topBtn.style.display="block";
+
+}else{
+
+topBtn.style.display="none";
+
+}
+
+};
+
+topBtn.onclick=function(){
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+// ==========================
+// Hero Animation
+// ==========================
+
+document.querySelector(".hero")
+.animate(
+
+[
+{opacity:0,transform:"translateY(40px)"},
+{opacity:1,transform:"translateY(0)"}
+],
+
+{
+
+duration:1000,
+
+fill:"forwards"
+
+}
+
+);
+
+// ==========================
+// Console
+// ==========================
+
+console.log(
+
+"%cPMD Learning Centre",
+
+"color:#F57C00;font-size:18px;font-weight:bold;"
+
+);
+
+console.log("Home Page Loaded");
+
+</script>
+
+</body>
+
+</html>
