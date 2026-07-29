@@ -200,3 +200,148 @@ resultForm.addEventListener("submit",async(e)=>{
 // Initial Load
 
 loadResults();
+// ======================================
+// Edit & Delete Results
+// ======================================
+
+import {
+    doc,
+    updateDoc,
+    deleteDoc,
+    onSnapshot
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+// ======================================
+// Real-time Results
+// ======================================
+
+onSnapshot(collection(db,"results"),()=>{
+
+    loadResults();
+
+});
+
+// ======================================
+// Result Events
+// ======================================
+
+resultTable.addEventListener("click",async(e)=>{
+
+    const row=e.target.closest("tr");
+
+    if(!row) return;
+
+    const resultId=row.cells[0].innerText;
+
+    const snapshot=await getDocs(
+        collection(db,"results")
+    );
+
+    // ==========================
+    // Delete Result
+    // ==========================
+
+    if(e.target.classList.contains("delete")){
+
+        if(!confirm("Delete this result?")) return;
+
+        snapshot.forEach(async(item)=>{
+
+            if(item.data().resultId===resultId){
+
+                await deleteDoc(
+                    doc(db,"results",item.id)
+                );
+
+            }
+
+        });
+
+    }
+
+    // ==========================
+    // Edit Result Status
+    // ==========================
+
+    if(e.target.classList.contains("edit")){
+
+        const newStatus=prompt(
+            "Enter Status (Pass / Fail)",
+            row.cells[5].innerText
+        );
+
+        if(!newStatus) return;
+
+        snapshot.forEach(async(item)=>{
+
+            if(item.data().resultId===resultId){
+
+                await updateDoc(
+                    doc(db,"results",item.id),
+                    {
+                        status:newStatus
+                    }
+                );
+
+            }
+
+        });
+
+    }
+
+    // ==========================
+    // View Result
+    // ==========================
+
+    if(e.target.classList.contains("view")){
+
+        alert(
+
+`Result Details
+
+Student : ${row.cells[1].innerText}
+
+Quiz : ${row.cells[2].innerText}
+
+Marks : ${row.cells[3].innerText}
+
+Percentage : ${row.cells[4].innerText}
+
+Status : ${row.cells[5].innerText}`
+
+        );
+
+    }
+
+});
+
+// ======================================
+// Error Handling
+// ======================================
+
+window.addEventListener("error",(e)=>{
+
+    console.error(
+        "PMD Result Error:",
+        e.message
+    );
+
+});
+
+// ======================================
+// Console
+// ======================================
+
+console.log(
+
+"%cPMD Learning Centre V2",
+
+"color:#F57C00;font-size:18px;font-weight:bold;"
+
+);
+
+console.log("Result Module Loaded Successfully");
+
+// ======================================
+// End of results.js
+// ======================================
