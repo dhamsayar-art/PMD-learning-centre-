@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>My Profile | PMD Learning Centre</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+<link rel="stylesheet"
+href="css/dashboard.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+body{
+
+background:#f5f6fa;
+
+font-family:Poppins,sans-serif;
+
+}
+
+.container{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:30px;
+
+}
+
+.profile-card{
+
+background:#fff;
+
+border-radius:20px;
+
+padding:30px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+
+text-align:center;
+
+}
+
+.profile-card img{
+
+width:170px;
+
+height:170px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:5px solid #F57C00;
+
+margin-bottom:20px;
+
+}
+
+.profile-card h2{
+
+margin-bottom:8px;
+
+color:#222;
+
+}
+
+.profile-card p{
+
+color:#666;
+
+margin:5px 0;
+
+}
+
+.profile-form{
+
+margin-top:30px;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:18px;
+
+}
+
+.profile-form input,
+
+.profile-form textarea,
+
+.profile-form select{
+
+padding:14px;
+
+border:2px solid #ddd;
+
+border-radius:10px;
+
+outline:none;
+
+font-size:15px;
+
+}
+
+.profile-form textarea{
+
+resize:vertical;
+
+min-height:120px;
+
+}
+
+.save-btn{
+
+background:#F57C00;
+
+color:#fff;
+
+border:none;
+
+padding:15px;
+
+border-radius:10px;
+
+font-size:16px;
+
+cursor:pointer;
+
+font-weight:600;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="profile-card">
+
+<img
+id="profilePreview"
+src="images/default-user.png"
+alt="Profile">
+
+<h2 id="profileName">
+
+PMD User
+
+</h2>
+
+<p id="profileEmail">
+
+user@email.com
+
+</p>
+
+<p id="profileRole">
+
+Student
+
+</p>
+<!-- Profile Form -->
+
+<form id="profileForm" class="profile-form">
+
+<input
+type="file"
+id="profileImage"
+accept="image/*">
+
+<input
+type="text"
+id="fullName"
+placeholder="Full Name"
+required>
+
+<input
+type="email"
+id="email"
+placeholder="Email Address"
+required>
+
+<input
+type="tel"
+id="mobile"
+placeholder="Mobile Number"
+required>
+
+<input
+type="date"
+id="dob"
+required>
+
+<select
+id="gender"
+required>
+
+<option value="">Select Gender</option>
+
+<option value="Male">Male</option>
+
+<option value="Female">Female</option>
+
+<option value="Other">Other</option>
+
+</select>
+
+<textarea
+id="address"
+placeholder="Address"
+required></textarea>
+
+<select
+id="course">
+
+<option value="">Select Course</option>
+
+<option>LDC</option>
+
+<option>Rajasthan GK</option>
+
+<option>CET</option>
+
+<option>REET</option>
+
+<option>Patwari</option>
+
+<option>Police</option>
+
+<option>SSC</option>
+
+<option>Banking</option>
+
+</select>
+
+<input
+type="text"
+id="qualification"
+placeholder="Qualification">
+
+<button
+type="submit"
+class="save-btn">
+
+💾 Save Profile
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<footer
+style="text-align:center;margin-top:30px;color:#777;">
+
+© 2026 PMD Learning Centre | Profile Management
+
+</footer>
+
+<script type="module" src="firebase.js"></script>
+
+<script src="profile.js"></script>
+<script type="module">
+
+import { auth } from "./firebase.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+// =============================
+// Authentication
+// =============================
+
+onAuthStateChanged(auth,(user)=>{
+
+    if(!user){
+
+        window.location.href="login.html";
+        return;
+
+    }
+
+    document.getElementById("profileEmail").innerText =
+    user.email || "";
+
+});
+
+// =============================
+// Elements
+// =============================
+
+const profileImage =
+document.getElementById("profileImage");
+
+const profilePreview =
+document.getElementById("profilePreview");
+
+const fullName =
+document.getElementById("fullName");
+
+const email =
+document.getElementById("email");
+
+const profileName =
+document.getElementById("profileName");
+
+const profileEmail =
+document.getElementById("profileEmail");
+
+const profileForm =
+document.getElementById("profileForm");
+
+// =============================
+// Image Preview
+// =============================
+
+profileImage.addEventListener("change",()=>{
+
+    const file =
+    profileImage.files[0];
+
+    if(file){
+
+        profilePreview.src =
+        URL.createObjectURL(file);
+
+    }
+
+});
+
+// =============================
+// Live Preview
+// =============================
+
+fullName.addEventListener("input",()=>{
+
+    profileName.innerText =
+    fullName.value || "PMD User";
+
+});
+
+email.addEventListener("input",()=>{
+
+    profileEmail.innerText =
+    email.value || "user@email.com";
+
+});
+
+// =============================
+// Form Validation
+// =============================
+
+profileForm.addEventListener("submit",(e)=>{
+
+    e.preventDefault();
+
+    alert(
+    "Profile will be saved after profile.js integration."
+    );
+
+});
+
+// =============================
+// Console
+// =============================
+
+console.log(
+
+"%cPMD Learning Centre V2",
+
+"color:#F57C00;font-size:18px;font-weight:bold;"
+
+);
+
+console.log("Profile Page Ready");
+
+</script>
+
+</body>
+
+</html>
