@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Settings | PMD Learning Centre</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f6fa;
+}
+
+.container{
+max-width:1300px;
+margin:auto;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+flex-wrap:wrap;
+}
+
+.header h2{
+color:#222;
+}
+
+.settings-form{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:18px;
+
+background:#fff;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.settings-form input,
+.settings-form textarea,
+.settings-form select{
+
+width:100%;
+
+padding:13px;
+
+border:2px solid #ddd;
+
+border-radius:10px;
+
+outline:none;
+
+font-size:15px;
+
+}
+
+.settings-form textarea{
+
+min-height:100px;
+
+resize:vertical;
+
+}
+
+.settings-form button{
+
+background:#F57C00;
+
+color:#fff;
+
+border:none;
+
+padding:14px;
+
+border-radius:10px;
+
+font-size:15px;
+
+font-weight:600;
+
+cursor:pointer;
+
+}
+
+.preview{
+
+background:#fff;
+
+margin-top:30px;
+
+padding:20px;
+
+border-radius:18px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+text-align:center;
+
+}
+
+.preview img{
+
+width:150px;
+
+height:150px;
+
+object-fit:contain;
+
+border-radius:12px;
+
+border:2px solid #eee;
+
+margin:10px;
+
+}
+
+@media(max-width:700px){
+
+.container{
+
+padding:15px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>⚙️ Institute Settings</h2>
+
+</div>
+<form id="settingsForm" class="settings-form">
+
+<input
+type="text"
+id="instituteName"
+placeholder="Institute Name"
+value="PMD Learning Centre"
+required>
+
+<input
+type="file"
+id="logoFile"
+accept="image/*">
+
+<input
+type="file"
+id="bannerFile"
+accept="image/*">
+
+<textarea
+id="address"
+placeholder="Institute Address"
+required></textarea>
+
+<input
+type="tel"
+id="phone"
+placeholder="Phone Number"
+required>
+
+<input
+type="email"
+id="email"
+placeholder="Email Address"
+required>
+
+<input
+type="url"
+id="website"
+placeholder="Website URL">
+
+<input
+type="url"
+id="facebook"
+placeholder="Facebook Profile URL">
+
+<input
+type="url"
+id="instagram"
+placeholder="Instagram Profile URL">
+
+<input
+type="url"
+id="youtube"
+placeholder="YouTube Channel URL">
+
+<select id="themeColor">
+
+<option value="#F57C00" selected>
+Orange (Default)
+</option>
+
+<option value="#2196F3">
+Blue
+</option>
+
+<option value="#4CAF50">
+Green
+</option>
+
+<option value="#9C27B0">
+Purple
+</option>
+
+<option value="#F44336">
+Red
+</option>
+
+</select>
+
+<button type="submit">
+
+💾 Save Settings
+
+</button>
+
+</form>
+
+<!-- Preview -->
+
+<div class="preview">
+
+<h3>
+
+Institute Preview
+
+</h3>
+
+<img
+id="logoPreview"
+src="images/logo.png"
+alt="Institute Logo">
+
+<br>
+
+<img
+id="bannerPreview"
+src="images/banner.jpg"
+alt="Institute Banner"
+style="width:100%;max-width:700px;height:220px;object-fit:cover;">
+
+<h2 id="previewName">
+
+PMD Learning Centre
+
+</h2>
+
+<p id="previewAddress">
+
+Institute Address
+
+</p>
+
+<p id="previewPhone">
+
+Phone Number
+
+</p>
+
+<p id="previewEmail">
+
+Email Address
+
+</p>
+
+<p id="previewWebsite">
+
+Website URL
+
+</p>
+
+<div
+style="margin-top:15px;">
+
+<a
+id="facebookLink"
+href="#"
+target="_blank">
+
+Facebook
+
+</a>
+
+|
+
+<a
+id="instagramLink"
+href="#"
+target="_blank">
+
+Instagram
+
+</a>
+
+|
+
+<a
+id="youtubeLink"
+href="#"
+target="_blank">
+
+YouTube
+
+</a>
+
+</div>
+
+</div>
+
+<footer
+style="margin-top:30px;text-align:center;color:#777;">
+
+© 2026 PMD Learning Centre | Institute Settings
+
+</footer>
+
+<script type="module" src="firebase.js"></script>
+
+<script src="settings.js"></script>
+<script type="module">
+
+import { auth } from "./firebase.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+// =============================
+// Admin Authentication
+// =============================
+
+onAuthStateChanged(auth,(user)=>{
+
+    if(!user){
+
+        window.location.href="login.html";
+
+    }
+
+});
+
+// =============================
+// Elements
+// =============================
+
+const form=document.getElementById("settingsForm");
+
+const instituteName=document.getElementById("instituteName");
+const address=document.getElementById("address");
+const phone=document.getElementById("phone");
+const email=document.getElementById("email");
+const website=document.getElementById("website");
+
+const facebook=document.getElementById("facebook");
+const instagram=document.getElementById("instagram");
+const youtube=document.getElementById("youtube");
+
+const logoFile=document.getElementById("logoFile");
+const bannerFile=document.getElementById("bannerFile");
+
+const logoPreview=document.getElementById("logoPreview");
+const bannerPreview=document.getElementById("bannerPreview");
+
+const previewName=document.getElementById("previewName");
+const previewAddress=document.getElementById("previewAddress");
+const previewPhone=document.getElementById("previewPhone");
+const previewEmail=document.getElementById("previewEmail");
+const previewWebsite=document.getElementById("previewWebsite");
+
+// =============================
+// Live Preview
+// =============================
+
+instituteName.addEventListener("input",()=>{
+
+    previewName.innerText=instituteName.value;
+
+});
+
+address.addEventListener("input",()=>{
+
+    previewAddress.innerText=address.value;
+
+});
+
+phone.addEventListener("input",()=>{
+
+    previewPhone.innerText=phone.value;
+
+});
+
+email.addEventListener("input",()=>{
+
+    previewEmail.innerText=email.value;
+
+});
+
+website.addEventListener("input",()=>{
+
+    previewWebsite.innerText=website.value;
+
+});
+
+facebook.addEventListener("input",()=>{
+
+    document.getElementById("facebookLink").href=facebook.value;
+
+});
+
+instagram.addEventListener("input",()=>{
+
+    document.getElementById("instagramLink").href=instagram.value;
+
+});
+
+youtube.addEventListener("input",()=>{
+
+    document.getElementById("youtubeLink").href=youtube.value;
+
+});
+
+// =============================
+// Logo Preview
+// =============================
+
+logoFile.addEventListener("change",()=>{
+
+    const file=logoFile.files[0];
+
+    if(file){
+
+        logoPreview.src=URL.createObjectURL(file);
+
+    }
+
+});
+
+// =============================
+// Banner Preview
+// =============================
+
+bannerFile.addEventListener("change",()=>{
+
+    const file=bannerFile.files[0];
+
+    if(file){
+
+        bannerPreview.src=URL.createObjectURL(file);
+
+    }
+
+});
+
+// =============================
+// Save Settings
+// =============================
+
+form.addEventListener("submit",(e)=>{
+
+    e.preventDefault();
+
+    alert(
+    "Settings will be saved to Firebase after settings.js integration."
+    );
+
+});
+
+// =============================
+// Console
+// =============================
+
+console.log(
+
+"%cPMD Learning Centre V2",
+
+"color:#F57C00;font-size:18px;font-weight:bold;"
+
+);
+
+console.log("Settings Page Ready");
+
+</script>
+
+</body>
+
+</html>
