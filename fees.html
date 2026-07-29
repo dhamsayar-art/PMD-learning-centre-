@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fee Management | PMD Learning Centre</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f6fa;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.header h2{
+color:#222;
+}
+
+.add-btn{
+background:#F57C00;
+color:#fff;
+border:none;
+padding:12px 20px;
+border-radius:10px;
+cursor:pointer;
+font-size:15px;
+font-weight:600;
+}
+
+.search-box{
+margin-bottom:25px;
+}
+
+.search-box input{
+width:100%;
+padding:14px;
+border:2px solid #ddd;
+border-radius:10px;
+outline:none;
+font-size:15px;
+}
+
+.fee-form{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+
+background:#fff;
+padding:25px;
+border-radius:18px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+margin-bottom:30px;
+
+}
+
+.fee-form input,
+.fee-form select{
+
+padding:13px;
+border:2px solid #ddd;
+border-radius:10px;
+outline:none;
+font-size:15px;
+
+}
+
+.fee-form button{
+
+background:#F57C00;
+color:#fff;
+border:none;
+padding:14px;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+
+}
+
+.table-box{
+
+background:#fff;
+padding:20px;
+border-radius:18px;
+overflow:auto;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#F57C00;
+color:#fff;
+padding:15px;
+}
+
+td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #eee;
+}
+
+.action-btn{
+padding:8px 12px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin:2px;
+}
+
+.edit{
+background:#2196F3;
+color:#fff;
+}
+
+.delete{
+background:#F44336;
+color:#fff;
+}
+
+.receipt{
+background:#4CAF50;
+color:#fff;
+}
+
+@media(max-width:700px){
+
+.container{
+padding:15px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>💰 Fee Management</h2>
+
+<button class="add-btn">
+
++ Add Fee
+
+</button>
+
+</div>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchFee"
+placeholder="Search Student Fee...">
+
+</div>
+<!-- Fee Form -->
+
+<form id="feeForm" class="fee-form">
+
+<input
+type="text"
+id="studentName"
+placeholder="Student Name"
+required>
+
+<select
+id="courseName"
+required>
+
+<option value="">Select Course</option>
+
+<option>LDC</option>
+
+<option>Rajasthan GK</option>
+
+<option>CET</option>
+
+<option>REET</option>
+
+<option>Patwari</option>
+
+<option>Police</option>
+
+<option>SSC</option>
+
+<option>Banking</option>
+
+</select>
+
+<input
+type="number"
+id="totalFee"
+placeholder="Total Fee (₹)"
+required>
+
+<input
+type="number"
+id="paidFee"
+placeholder="Paid Amount (₹)"
+required>
+
+<input
+type="number"
+id="dueFee"
+placeholder="Due Amount (₹)"
+readonly>
+
+<input
+type="date"
+id="dueDate"
+required>
+
+<select
+id="paymentStatus">
+
+<option value="Paid">Paid</option>
+
+<option value="Partial">Partial</option>
+
+<option value="Pending">Pending</option>
+
+</select>
+
+<button type="submit">
+
+Save Fee
+
+</button>
+
+</form>
+
+<!-- Fee List -->
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Fee ID</th>
+
+<th>Student</th>
+
+<th>Course</th>
+
+<th>Total Fee</th>
+
+<th>Paid</th>
+
+<th>Due</th>
+
+<th>Status</th>
+
+<th>Receipt</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="feeTable">
+
+<tr>
+
+<td>FEE001</td>
+
+<td>Demo Student</td>
+
+<td>LDC</td>
+
+<td>₹10,000</td>
+
+<td>₹8,000</td>
+
+<td>₹2,000</td>
+
+<td>Partial</td>
+
+<td>
+
+<button class="action-btn receipt">
+
+Receipt
+
+</button>
+
+</td>
+
+<td>
+
+<button class="action-btn edit">
+
+Edit
+
+</button>
+
+<button class="action-btn delete">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<footer
+style="margin-top:30px;text-align:center;color:#777;">
+
+© 2026 PMD Learning Centre | Fee Management
+
+</footer>
+
+<script type="module" src="firebase.js"></script>
+
+<script src="fees.js"></script>
+<script type="module">
+
+import { auth } from "./firebase.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+// =============================
+// Admin Authentication
+// =============================
+
+onAuthStateChanged(auth,(user)=>{
+
+    if(!user){
+
+        window.location.href="login.html";
+
+    }
+
+});
+
+// =============================
+// Auto Due Amount Calculator
+// =============================
+
+const totalFee =
+document.getElementById("totalFee");
+
+const paidFee =
+document.getElementById("paidFee");
+
+const dueFee =
+document.getElementById("dueFee");
+
+function calculateDue(){
+
+    const total =
+    Number(totalFee.value);
+
+    const paid =
+    Number(paidFee.value);
+
+    dueFee.value =
+    Math.max(total-paid,0);
+
+}
+
+totalFee.addEventListener(
+"input",
+calculateDue
+);
+
+paidFee.addEventListener(
+"input",
+calculateDue
+);
+
+// =============================
+// Search Fee
+// =============================
+
+const searchInput =
+document.getElementById("searchFee");
+
+const feeTable =
+document.getElementById("feeTable");
+
+searchInput.addEventListener("keyup",()=>{
+
+    const value =
+    searchInput.value.toLowerCase();
+
+    const rows =
+    feeTable.querySelectorAll("tr");
+
+    rows.forEach(row=>{
+
+        row.style.display =
+        row.innerText
+        .toLowerCase()
+        .includes(value)
+
+        ? ""
+
+        : "none";
+
+    });
+
+});
+
+// =============================
+// Add Fee Button
+// =============================
+
+document.querySelector(".add-btn")
+
+.addEventListener("click",()=>{
+
+    document
+    .getElementById("studentName")
+    .focus();
+
+});
+
+// =============================
+// Form Validation
+// =============================
+
+document
+.getElementById("feeForm")
+
+.addEventListener("submit",(e)=>{
+
+    e.preventDefault();
+
+    alert(
+    "Fee record will be saved to Firebase."
+    );
+
+});
+
+// =============================
+// Receipt Button
+// =============================
+
+feeTable.addEventListener("click",(e)=>{
+
+    if(
+    e.target.classList.contains("receipt")
+    ){
+
+        alert(
+        "Receipt PDF will be generated after fees.js integration."
+        );
+
+    }
+
+});
+
+// =============================
+// Console
+// =============================
+
+console.log(
+
+"%cPMD Learning Centre V2",
+
+"color:#F57C00;font-size:18px;font-weight:bold;"
+
+);
+
+console.log("Fee Management Ready");
+
+</script>
+
+</body>
+
+</html>
