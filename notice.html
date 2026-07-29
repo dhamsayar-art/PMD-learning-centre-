@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Notice Board | PMD Learning Centre</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f6fa;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.header h2{
+color:#222;
+}
+
+.add-btn{
+background:#F57C00;
+color:#fff;
+border:none;
+padding:12px 20px;
+border-radius:10px;
+cursor:pointer;
+font-size:15px;
+font-weight:600;
+}
+
+.search-box{
+margin-bottom:25px;
+}
+
+.search-box input{
+width:100%;
+padding:14px;
+border:2px solid #ddd;
+border-radius:10px;
+outline:none;
+font-size:15px;
+}
+
+.notice-form{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:15px;
+
+background:#fff;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+margin-bottom:30px;
+
+}
+
+.notice-form input,
+.notice-form textarea,
+.notice-form select{
+
+padding:13px;
+
+border:2px solid #ddd;
+
+border-radius:10px;
+
+outline:none;
+
+font-size:15px;
+
+}
+
+.notice-form textarea{
+
+resize:vertical;
+
+min-height:120px;
+
+}
+
+.notice-form button{
+
+background:#F57C00;
+
+color:#fff;
+
+border:none;
+
+padding:14px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-weight:600;
+
+}
+
+.table-box{
+
+background:#fff;
+
+padding:20px;
+
+border-radius:18px;
+
+overflow:auto;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+th{
+
+background:#F57C00;
+
+color:#fff;
+
+padding:15px;
+
+}
+
+td{
+
+padding:15px;
+
+text-align:center;
+
+border-bottom:1px solid #eee;
+
+}
+
+.action-btn{
+
+padding:8px 12px;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+margin:2px;
+
+}
+
+.edit{
+
+background:#2196F3;
+
+color:#fff;
+
+}
+
+.delete{
+
+background:#F44336;
+
+color:#fff;
+
+}
+
+.view{
+
+background:#4CAF50;
+
+color:#fff;
+
+}
+
+@media(max-width:700px){
+
+.container{
+
+padding:15px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>📢 Notice Board</h2>
+
+<button class="add-btn">
+
++ Add Notice
+
+</button>
+
+</div>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchNotice"
+placeholder="Search Notice...">
+
+</div>
+<!-- Notice Form -->
+
+<form id="noticeForm" class="notice-form">
+
+<input
+type="text"
+id="noticeTitle"
+placeholder="Notice Title"
+required>
+
+<textarea
+id="noticeDescription"
+placeholder="Notice Description"
+required></textarea>
+
+<input
+type="file"
+id="noticeFile"
+accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+
+<select
+id="noticeAudience"
+required>
+
+<option value="">Select Audience</option>
+
+<option value="All">All</option>
+
+<option value="Students">Students</option>
+
+<option value="Teachers">Teachers</option>
+
+</select>
+
+<select
+id="noticePriority"
+required>
+
+<option value="Normal">Normal</option>
+
+<option value="Important">Important</option>
+
+<option value="Urgent">Urgent</option>
+
+</select>
+
+<input
+type="date"
+id="noticeDate"
+required>
+
+<button type="submit">
+
+Publish Notice
+
+</button>
+
+</form>
+
+<!-- Notice List -->
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Title</th>
+
+<th>Audience</th>
+
+<th>Priority</th>
+
+<th>Date</th>
+
+<th>Attachment</th>
+
+<th>View</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="noticeTable">
+
+<tr>
+
+<td>NT001</td>
+
+<td>Demo Notice</td>
+
+<td>All</td>
+
+<td>Important</td>
+
+<td>29-07-2026</td>
+
+<td>PDF</td>
+
+<td>
+
+<button class="action-btn view">
+
+View
+
+</button>
+
+</td>
+
+<td>
+
+<button class="action-btn edit">
+
+Edit
+
+</button>
+
+<button class="action-btn delete">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<footer
+style="margin-top:30px;text-align:center;color:#777;">
+
+© 2026 PMD Learning Centre | Notice Board
+
+</footer>
+
+<script type="module" src="firebase.js"></script>
+
+<script src="notice.js"></script>
