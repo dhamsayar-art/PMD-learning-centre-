@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Certificate Generator | PMD Learning Centre</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f5f5;
+}
+
+.container{
+max-width:1300px;
+margin:auto;
+padding:30px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.header h2{
+color:#F57C00;
+}
+
+.form-box{
+background:#fff;
+padding:25px;
+border-radius:18px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+margin-bottom:30px;
+}
+
+.form-box input,
+.form-box select{
+
+padding:14px;
+border:2px solid #ddd;
+border-radius:10px;
+font-size:15px;
+outline:none;
+
+}
+
+.form-box button{
+
+padding:14px;
+background:#F57C00;
+color:#fff;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+
+}
+
+.certificate{
+
+background:#fff;
+padding:50px;
+border:10px solid #F57C00;
+border-radius:20px;
+text-align:center;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+
+}
+
+.certificate h1{
+
+font-size:42px;
+color:#F57C00;
+
+}
+
+.certificate h2{
+
+margin-top:20px;
+font-size:32px;
+
+}
+
+.certificate p{
+
+margin-top:15px;
+font-size:18px;
+line-height:1.8;
+
+}
+
+.signature{
+
+display:flex;
+justify-content:space-between;
+margin-top:60px;
+
+}
+
+.signature div{
+
+text-align:center;
+
+}
+
+@media(max-width:700px){
+
+.signature{
+
+flex-direction:column;
+gap:30px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>🎓 Certificate Generator</h2>
+
+</div>
+<form id="certificateForm" class="form-box">
+
+<input
+type="text"
+id="studentName"
+placeholder="Student Name"
+required>
+
+<input
+type="text"
+id="fatherName"
+placeholder="Father's Name"
+required>
+
+<input
+type="text"
+id="certificateNo"
+placeholder="Certificate No."
+required>
+
+<select
+id="courseName"
+required>
+
+<option value="">Select Course</option>
+
+<option>LDC</option>
+
+<option>Rajasthan GK</option>
+
+<option>CET</option>
+
+<option>REET</option>
+
+<option>Patwari</option>
+
+<option>Police</option>
+
+<option>SSC</option>
+
+<option>Banking</option>
+
+</select>
+
+<input
+type="date"
+id="completionDate"
+required>
+
+<select
+id="grade"
+required>
+
+<option value="">Select Grade</option>
+
+<option>A+</option>
+
+<option>A</option>
+
+<option>B+</option>
+
+<option>B</option>
+
+<option>C</option>
+
+</select>
+
+<button type="submit">
+
+Generate Certificate
+
+</button>
+
+</form>
+
+<!-- Certificate Preview -->
+
+<div class="certificate" id="certificatePreview">
+
+<h1>
+
+PMD Learning Centre
+
+</h1>
+
+<h3>
+
+Certificate of Completion
+
+</h3>
+
+<p>
+
+This is to certify that
+
+</p>
+
+<h2 id="previewStudentName">
+
+Student Name
+
+</h2>
+
+<p>
+
+S/o / D/o
+
+<strong id="previewFatherName">
+
+Father Name
+
+</strong>
+
+</p>
+
+<p>
+
+has successfully completed
+
+<strong id="previewCourse">
+
+Course Name
+
+</strong>
+
+at
+
+<strong>
+
+PMD Learning Centre
+
+</strong>
+
+with Grade
+
+<strong id="previewGrade">
+
+A
+
+</strong>
+
+on
+
+<strong id="previewDate">
+
+Completion Date
+
+</strong>.
+
+</p>
+
+<p>
+
+Certificate No :
+
+<strong id="previewCertificateNo">
+
+PMD-0001
+
+</strong>
+
+</p>
+
+<div class="signature">
+
+<div>
+
+____________________
+
+<br>
+
+Director
+
+</div>
+
+<div>
+
+____________________
+
+<br>
+
+Authorized Signature
+
+</div>
+
+</div>
+
+</div>
+
+<div
+style="text-align:center;margin-top:30px;">
+
+<button
+id="printCertificate">
+
+🖨️ Print Certificate
+
+</button>
+
+<button
+id="downloadPdf">
+
+📄 Download PDF
+
+</button>
+
+</div>
+
+<footer
+style="margin-top:30px;text-align:center;color:#777;">
+
+© 2026 PMD Learning Centre | Certificate Generator
+
+</footer>
+
+<script type="module" src="firebase.js"></script>
+
+<script src="certificate.js"></script>
+<script type="module">
+
+import { auth } from "./firebase.js";
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+// =============================
+// Admin Authentication
+// =============================
+
+onAuthStateChanged(auth,(user)=>{
+
+    if(!user){
+
+        window.location.href="login.html";
+        return;
+
+    }
+
+});
+
+// =============================
+// Elements
+// =============================
+
+const form =
+document.getElementById("certificateForm");
+
+const studentName =
+document.getElementById("studentName");
+
+const fatherName =
+document.getElementById("fatherName");
+
+const courseName =
+document.getElementById("courseName");
+
+const completionDate =
+document.getElementById("completionDate");
+
+const grade =
+document.getElementById("grade");
+
+const certificateNo =
+document.getElementById("certificateNo");
+
+// =============================
+// Live Preview
+// =============================
+
+form.addEventListener("input",()=>{
+
+    document.getElementById(
+    "previewStudentName"
+    ).innerText =
+    studentName.value || "Student Name";
+
+    document.getElementById(
+    "previewFatherName"
+    ).innerText =
+    fatherName.value || "Father Name";
+
+    document.getElementById(
+    "previewCourse"
+    ).innerText =
+    courseName.value || "Course Name";
+
+    document.getElementById(
+    "previewGrade"
+    ).innerText =
+    grade.value || "A";
+
+    document.getElementById(
+    "previewCertificateNo"
+    ).innerText =
+    certificateNo.value || "PMD-0001";
+
+    document.getElementById(
+    "previewDate"
+    ).innerText =
+    completionDate.value || "Completion Date";
+
+});
+
+// =============================
+// Generate Certificate
+// =============================
+
+form.addEventListener("submit",(e)=>{
+
+    e.preventDefault();
+
+    alert(
+    "Certificate Generated Successfully."
+    );
+
+});
+
+// =============================
+// Print Certificate
+// =============================
+
+document
+.getElementById("printCertificate")
+
+.addEventListener("click",()=>{
+
+    window.print();
+
+});
+
+// =============================
+// Download PDF
+// =============================
+
+document
+.getElementById("downloadPdf")
+
+.addEventListener("click",()=>{
+
+    alert(
+    "PDF Download will be enabled after certificate.js integration."
+    );
+
+});
+
+// =============================
+// Console
+// =============================
+
+console.log(
+
+"%cPMD Learning Centre V2",
+
+"color:#F57C00;font-size:18px;font-weight:bold;"
+
+);
+
+console.log(
+"Certificate Page Ready"
+);
+
+</script>
+
+</body>
+
+</html>
