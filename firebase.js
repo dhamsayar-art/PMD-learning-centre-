@@ -137,3 +137,13 @@ console.log("Version :", PMD_VERSION);
 // ======================================
 // End of firebase.js
 // ======================================
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const googleProvider = new GoogleAuthProvider();
+
+export {
+    auth,
+    db,
+    googleProvider
+};
