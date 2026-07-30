@@ -33,7 +33,7 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-aut
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey:"AIzaSyAmxb849l1qgtrSaxSb7FJSSpYT4svR46I",
   authDomain: "pmd-learning-centre.firebaseapp.com",
   projectId: "pmd-learning-centre",
   storageBucket: "pmd-learning-centre.firebasestorage.app",
