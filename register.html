@@ -557,16 +557,6 @@ transform:rotate(360deg);
 
 </style>
 
-<!-- Firebase -->
-
-<script type="module" src="firebase.js"></script>
-
-<!-- Register Script -->
-
-<script src="register.js"></script>
-
-<script>
-
 const password=document.getElementById("password");
 
 const confirmPassword=document.getElementById("confirmPassword");
@@ -614,32 +604,6 @@ toggleConfirm.classList.replace("fa-eye-slash","fa-eye");
 }
 
 };
-
-// Password Match Validation
-
-document.getElementById("registerForm").addEventListener("submit",(e)=>{
-
-if(password.value!==confirmPassword.value){
-
-e.preventDefault();
-
-const msg=document.getElementById("message");
-
-msg.style.display="block";
-
-msg.style.background="#fde8e8";
-
-msg.style.color="#c62828";
-
-msg.innerHTML="Passwords do not match.";
-
-return;
-
-}
-
-document.getElementById("loadingScreen").style.display="flex";
-
-});
 
 </script>
 <script type="module" src="js/firebase.js"></script>
