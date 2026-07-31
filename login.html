@@ -456,37 +456,7 @@ toggle.classList.add("fa-eye");
 
 });
 
-const form=document.getElementById("loginForm");
-
-form.addEventListener("submit",function(e){
-
-e.preventDefault();
-
-document.getElementById("loadingScreen").style.display="flex";
-
-/*
-Firebase Login
-
-यहाँ login.js में
-Email/Password Authentication चलेगी।
-
-Successful Login →
-dashboard.html
-
-Failed Login →
-Error Message
-*/
-
-setTimeout(()=>{
-
-document.getElementById("loadingScreen").style.display="none";
-
-},1500);
-
-});
-
 </script>
-<script type="module" src="js/firebase.js"></script>
 <script type="module" src="js/login.js"></script>
 </body>
 
