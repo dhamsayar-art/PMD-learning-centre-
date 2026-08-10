@@ -1,6 +1,7 @@
+```javascript
 // =====================================
 // PMD Learning Centre V2
-// login.js (Part 1)
+// login.js
 // =====================================
 
 // Import Firebase Functions
@@ -14,10 +15,15 @@ import {
     signInWithPopup,
     setPersistence,
     browserLocalPersistence,
-    browserSessionPersistence
+    browserSessionPersistence,
+    onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
+
+// =====================================
 // Elements
+// =====================================
+
 const loginForm = document.getElementById("loginForm");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -26,7 +32,11 @@ const message = document.getElementById("message");
 const loadingScreen = document.getElementById("loadingScreen");
 const googleBtn = document.getElementById("googleLogin");
 
+
+// =====================================
 // Show Message
+// =====================================
+
 function showMessage(text, type) {
 
     message.style.display = "block";
@@ -38,17 +48,35 @@ function showMessage(text, type) {
     }, 4000);
 }
 
+
+// =====================================
 // Show Loader
+// =====================================
+
 function showLoader() {
-    loadingScreen.style.display = "flex";
+
+    if (loadingScreen) {
+        loadingScreen.style.display = "flex";
+    }
 }
 
+
+// =====================================
 // Hide Loader
+// =====================================
+
 function hideLoader() {
-    loadingScreen.style.display = "none";
+
+    if (loadingScreen) {
+        loadingScreen.style.display = "none";
+    }
 }
 
+
+// =====================================
 // Login Form Submit
+// =====================================
+
 loginForm.addEventListener("submit", async (e) => {
 
     e.preventDefault();
@@ -60,64 +88,59 @@ loginForm.addEventListener("submit", async (e) => {
         // Remember Me
         await setPersistence(
             auth,
-            rememberMe.checked
+            rememberMe && rememberMe.checked
                 ? browserLocalPersistence
                 : browserSessionPersistence
         );
 
         // Login
-        const userCredential =
-            await signInWithEmailAndPassword(
-                auth,
-                email.value.trim(),
-                password.value
-            );
+        await signInWithEmailAndPassword(
+            auth,
+            email.value.trim(),
+            password.value
+        );
 
         showMessage(
             "Login Successful!",
             "success"
         );
 
-        // Redirect after Login
-        setTimeout(() => {
+        // Remove loading immediately
+        hideLoader();
 
-            window.location.href =
-                "dashboard.html";
-
-        }, 1000);
+        // Redirect immediately
+        window.location.href = "dashboard.html";
 
     } catch (error) {
 
         hideLoader();
 
-        let errorText =
-            "Login Failed!";
+        let errorText = "Login Failed!";
 
         switch (error.code) {
 
             case "auth/user-not-found":
-                errorText =
-                    "User not found.";
+                errorText = "User not found.";
                 break;
 
             case "auth/wrong-password":
-                errorText =
-                    "Incorrect password.";
+                errorText = "Incorrect password.";
+                break;
+
+            case "auth/invalid-credential":
+                errorText = "Incorrect email or password.";
                 break;
 
             case "auth/invalid-email":
-                errorText =
-                    "Invalid email address.";
+                errorText = "Invalid email address.";
                 break;
 
             case "auth/too-many-requests":
-                errorText =
-                    "Too many attempts. Try again later.";
+                errorText = "Too many attempts. Try again later.";
                 break;
 
             default:
-                errorText =
-                    error.message;
+                errorText = error.message;
         }
 
         showMessage(
@@ -127,6 +150,8 @@ loginForm.addEventListener("submit", async (e) => {
     }
 
 });
+
+
 // =====================================
 // Google Sign In
 // =====================================
@@ -143,13 +168,15 @@ googleBtn.addEventListener("click", async () => {
         );
 
         showMessage(
-            "Welcome " + result.user.displayName,
+            "Welcome " + (result.user.displayName || ""),
             "success"
         );
 
-        setTimeout(() => {
-            window.location.href = "dashboard.html";
-        }, 1000);
+        // Remove loading immediately
+        hideLoader();
+
+        // Redirect immediately
+        window.location.href = "dashboard.html";
 
     } catch (error) {
 
@@ -159,28 +186,23 @@ googleBtn.addEventListener("click", async () => {
             error.message,
             "error"
         );
-
     }
 
 });
+
 
 // =====================================
 // Auto Login Check
 // =====================================
 
-import {
-    onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-
 onAuthStateChanged(auth, (user) => {
 
     if (user) {
-
         window.location.href = "dashboard.html";
-
     }
 
 });
+
 
 // =====================================
 // Input Validation
@@ -203,6 +225,7 @@ password.addEventListener("input", () => {
 
 });
 
+
 // =====================================
 // Enter Key Support
 // =====================================
@@ -216,6 +239,7 @@ document.addEventListener("keydown", (e) => {
     }
 
 });
+
 
 // =====================================
 // Network Status
@@ -239,6 +263,7 @@ window.addEventListener("online", () => {
 
 });
 
+
 // =====================================
 // Console Message
 // =====================================
@@ -252,6 +277,8 @@ console.log(
     "Login System Loaded Successfully."
 );
 
+
 // =====================================
 // End of login.js
 // =====================================
+```
