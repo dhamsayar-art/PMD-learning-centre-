@@ -277,7 +277,7 @@ console.log(
     "Login System Loaded Successfully."
 );
 
-
+alert("LOGIN.JS LOADED");
 // =====================================
 // End of login.js
 // =====================================
