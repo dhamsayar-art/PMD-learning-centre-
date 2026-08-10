@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,8 +34,6 @@
             overflow:hidden;
             position:relative;
         }
-
-        /* Animated Background */
 
         body::before{
             content:"";
@@ -174,6 +173,7 @@
         .login-btn:hover{
             background:#E65100;
         }
+
         .divider{
             display:flex;
             align-items:center;
@@ -265,7 +265,6 @@
             }
 
         }
-
     </style>
 </head>
 
@@ -381,19 +380,27 @@ Register Now
 All Rights Reserved.
 
 </footer>
+
 </form>
 
 </div>
 
 </div>
 
+
 <!-- Loading Overlay -->
+
 <div id="loadingScreen" class="loading-screen" style="display:none;">
+
     <div class="loader"></div>
+
     <p>Signing In...</p>
+
 </div>
 
+
 <style>
+
 .loading-screen{
     position:fixed;
     inset:0;
@@ -425,34 +432,45 @@ All Rights Reserved.
         transform:rotate(360deg);
     }
 }
+
 </style>
 
-<!-- Firebase SDK -->
+
+<!-- Firebase -->
+
 <script type="module" src="firebase.js"></script>
 
 <!-- Login Script -->
+
 <script type="module" src="login.js"></script>
+
+
+<!-- Password Show/Hide -->
 
 <script>
 
-const password=document.getElementById("password");
-const toggle=document.getElementById("togglePassword");
+const password = document.getElementById("password");
+const toggle = document.getElementById("togglePassword");
 
-toggle.addEventListener("click",()=>{
+toggle.addEventListener("click", () => {
 
-if(password.type==="password"){
+    if(password.type === "password"){
 
-password.type="text";
-toggle.classList.remove("fa-eye");
-toggle.classList.add("fa-eye-slash");
+        password.type = "text";
 
-}else{
+        toggle.classList.remove("fa-eye");
 
-password.type="password";
-toggle.classList.remove("fa-eye-slash");
-toggle.classList.add("fa-eye");
+        toggle.classList.add("fa-eye-slash");
 
-}
+    }else{
+
+        password.type = "password";
+
+        toggle.classList.remove("fa-eye-slash");
+
+        toggle.classList.add("fa-eye");
+
+    }
 
 });
 
@@ -461,3 +479,4 @@ toggle.classList.add("fa-eye");
 </body>
 
 </html>
+```
